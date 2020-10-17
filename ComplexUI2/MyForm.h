@@ -59,6 +59,8 @@ namespace ComplexUI2
 	private: System::Windows::Forms::TextBox^ textBoxShow;
 	private: System::Windows::Forms::TextBox^ textBoxMod;
 	private: System::Windows::Forms::TextBox^ textBoxPfase;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::TextBox^ textBoxComb;
 
 
 
@@ -91,6 +93,8 @@ namespace ComplexUI2
 			this->textBoxShow = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxMod = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPfase = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxComb = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -137,6 +141,8 @@ namespace ComplexUI2
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label3);
+			this->groupBox1->Controls->Add(this->textBoxComb);
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->textBoxImag);
@@ -152,7 +158,7 @@ namespace ComplexUI2
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(340, 74);
+			this->label2->Location = System::Drawing::Point(340, 58);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(52, 13);
 			this->label2->TabIndex = 4;
@@ -161,7 +167,7 @@ namespace ComplexUI2
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(363, 37);
+			this->label1->Location = System::Drawing::Point(363, 22);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(29, 13);
 			this->label1->TabIndex = 3;
@@ -170,14 +176,14 @@ namespace ComplexUI2
 			// 
 			// textBoxImag
 			// 
-			this->textBoxImag->Location = System::Drawing::Point(398, 71);
+			this->textBoxImag->Location = System::Drawing::Point(398, 55);
 			this->textBoxImag->Name = L"textBoxImag";
 			this->textBoxImag->Size = System::Drawing::Size(339, 20);
 			this->textBoxImag->TabIndex = 2;
 			// 
 			// textBoxReal
 			// 
-			this->textBoxReal->Location = System::Drawing::Point(398, 34);
+			this->textBoxReal->Location = System::Drawing::Point(398, 19);
 			this->textBoxReal->Name = L"textBoxReal";
 			this->textBoxReal->Size = System::Drawing::Size(339, 20);
 			this->textBoxReal->TabIndex = 1;
@@ -220,6 +226,23 @@ namespace ComplexUI2
 			this->textBoxPfase->Size = System::Drawing::Size(339, 20);
 			this->textBoxPfase->TabIndex = 8;
 			// 
+			// textBoxComb
+			// 
+			this->textBoxComb->Location = System::Drawing::Point(398, 89);
+			this->textBoxComb->Name = L"textBoxComb";
+			this->textBoxComb->Size = System::Drawing::Size(339, 20);
+			this->textBoxComb->TabIndex = 5;
+			this->textBoxComb->TextChanged += gcnew System::EventHandler(this, &MyForm::textBoxComb_TextChanged);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(360, 92);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(32, 13);
+			this->label3->TabIndex = 6;
+			this->label3->Text = L"re+im";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -238,7 +261,7 @@ namespace ComplexUI2
 			this->MaximumSize = System::Drawing::Size(812, 556);
 			this->MinimumSize = System::Drawing::Size(812, 556);
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L" ";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
@@ -259,19 +282,33 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 {
 	/*try
 	{*/
-		//String^ x = textBoxReal->Text;
-		//float r = float::Parse(textBoxReal->Text);
-		//String^ c = textBoxImag->Text;
-		//float i = float::Parse(textBoxImag->Text);
+	if ((textBoxReal->Text->Length != 0) && (textBoxImag->Text->Length != 0))
+	{
 		double rr = Convert::ToDouble(textBoxReal->Text);
 		double ii = Convert::ToDouble(textBoxImag->Text);
 		a->setall(rr, ii);
-	
+		return;
+	}
+	else
+	if (textBoxComb->Text->Length < 1)
+		return;
+		String^ s = textBoxComb->Text;   //a+i*5
+		String^ delimiter = "+";
+		String^ token1 = s->Split('+')[0]; // 0- до +     1- после
+		String^ token2 = s->Split('*')[1];
+		double r = Convert::ToDouble(token1);
+		double i = Convert::ToDouble(token2);
+		a->setall(r, i);
+		// длинна всей строки - ->Lenght
+	    //String^ x = textBoxReal->Text;
+		//float r = float::Parse(textBoxReal->Text);
+		//String^ c = textBoxImag->Text;
+		//float i = float::Parse(textBoxImag->Text);
 	/*catch () {}*/
 }
 private: System::Void buttonShow_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	textBoxShow->Text = a->getre() + "+" + a->getim() + "i" ;
+	textBoxShow->Text = a->getre() + "+" + "i" + "*" + a->getim()  ;
 
 }
 private: System::Void buttonAbs_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -285,6 +322,8 @@ private: System::Void buttonPhase_Click(System::Object^ sender, System::EventArg
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void textBoxShow_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBoxComb_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
