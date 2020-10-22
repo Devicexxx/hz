@@ -16,7 +16,6 @@ void Main(array<String^>^ args)
 {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-
 	ComplexUI2::MyForm form;
 	Application::Run(% form);
 	Application::Run(gcnew MyForm);

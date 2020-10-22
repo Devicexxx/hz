@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Comlpex.h"
-
+#include <stdlib.h>
 namespace ComplexUI2 
 {
 
@@ -95,6 +95,12 @@ namespace ComplexUI2
 			this->buttonAbs = (gcnew System::Windows::Forms::Button());
 			this->buttonPhase = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->textBoxCombb = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->textBoxImagb = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxRealb = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBoxComb = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -106,12 +112,6 @@ namespace ComplexUI2
 			this->textBoxShow = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxMod = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPfase = (gcnew System::Windows::Forms::TextBox());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->textBoxCombb = (gcnew System::Windows::Forms::TextBox());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBoxImagb = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxRealb = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPfaseb = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxModb = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxShowb = (gcnew System::Windows::Forms::TextBox());
@@ -180,6 +180,54 @@ namespace ComplexUI2
 			this->groupBox1->TabIndex = 4;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Задать число";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(769, 92);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(32, 13);
+			this->label4->TabIndex = 12;
+			this->label4->Text = L"re+im";
+			// 
+			// textBoxCombb
+			// 
+			this->textBoxCombb->Location = System::Drawing::Point(807, 89);
+			this->textBoxCombb->Name = L"textBoxCombb";
+			this->textBoxCombb->Size = System::Drawing::Size(339, 20);
+			this->textBoxCombb->TabIndex = 11;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(749, 58);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(52, 13);
+			this->label5->TabIndex = 10;
+			this->label5->Text = L"Imaginary";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(772, 22);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(29, 13);
+			this->label6->TabIndex = 9;
+			this->label6->Text = L"Real";
+			// 
+			// textBoxImagb
+			// 
+			this->textBoxImagb->Location = System::Drawing::Point(807, 55);
+			this->textBoxImagb->Name = L"textBoxImagb";
+			this->textBoxImagb->Size = System::Drawing::Size(339, 20);
+			this->textBoxImagb->TabIndex = 8;
+			// 
+			// textBoxRealb
+			// 
+			this->textBoxRealb->Location = System::Drawing::Point(807, 19);
+			this->textBoxRealb->Name = L"textBoxRealb";
+			this->textBoxRealb->Size = System::Drawing::Size(339, 20);
+			this->textBoxRealb->TabIndex = 7;
 			// 
 			// label3
 			// 
@@ -269,54 +317,6 @@ namespace ComplexUI2
 			this->textBoxPfase->Size = System::Drawing::Size(339, 20);
 			this->textBoxPfase->TabIndex = 8;
 			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(769, 92);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(32, 13);
-			this->label4->TabIndex = 12;
-			this->label4->Text = L"re+im";
-			// 
-			// textBoxCombb
-			// 
-			this->textBoxCombb->Location = System::Drawing::Point(807, 89);
-			this->textBoxCombb->Name = L"textBoxCombb";
-			this->textBoxCombb->Size = System::Drawing::Size(339, 20);
-			this->textBoxCombb->TabIndex = 11;
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(749, 58);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(52, 13);
-			this->label5->TabIndex = 10;
-			this->label5->Text = L"Imaginary";
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(772, 22);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(29, 13);
-			this->label6->TabIndex = 9;
-			this->label6->Text = L"Real";
-			// 
-			// textBoxImagb
-			// 
-			this->textBoxImagb->Location = System::Drawing::Point(807, 55);
-			this->textBoxImagb->Name = L"textBoxImagb";
-			this->textBoxImagb->Size = System::Drawing::Size(339, 20);
-			this->textBoxImagb->TabIndex = 8;
-			// 
-			// textBoxRealb
-			// 
-			this->textBoxRealb->Location = System::Drawing::Point(807, 19);
-			this->textBoxRealb->Name = L"textBoxRealb";
-			this->textBoxRealb->Size = System::Drawing::Size(339, 20);
-			this->textBoxRealb->TabIndex = 7;
-			// 
 			// textBoxPfaseb
 			// 
 			this->textBoxPfaseb->Location = System::Drawing::Point(819, 428);
@@ -356,6 +356,8 @@ namespace ComplexUI2
 			this->Controls->Add(this->buttonShow);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
+			this->MaximumSize = System::Drawing::Size(1202, 556);
+			this->MinimumSize = System::Drawing::Size(1202, 556);
 			this->Name = L"MyForm";
 			this->Text = L" ";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -372,7 +374,7 @@ namespace ComplexUI2
 	}
 private: System::Void OutToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-
+	abort;
 }
 private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArgs^ e) 
 {
