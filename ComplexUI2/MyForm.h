@@ -21,7 +21,7 @@ namespace ComplexUI2
 	public:
 		//float x, c, r, i;
 		Complex* a;
-		Complex* b;
+	    Complex* b;
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -75,7 +75,27 @@ namespace ComplexUI2
 	private: System::Windows::Forms::TextBox^ textBoxModb;
 	private: System::Windows::Forms::TextBox^ textBoxShowb;
 
+	private: System::Windows::Forms::Button^ buttonInc;
+	public:
+	private: System::Windows::Forms::Button^ buttonSum;
+	private: System::Windows::Forms::Button^ buttonLess;
+	private: System::Windows::Forms::Button^ buttonAbove;
+	private: System::Windows::Forms::Button^ buttonComp;
+	private: System::Windows::Forms::Button^ buttonEq;
+	private: System::Windows::Forms::TextBox^ textBoxInc;
+	private: System::Windows::Forms::TextBox^ textBoxComp;
+	private: System::Windows::Forms::TextBox^ textBoxLess;
+	private: System::Windows::Forms::TextBox^ textBoxAbove;
+	private: System::Windows::Forms::TextBox^ textBoxEq;
+	private: System::Windows::Forms::TextBox^ textBoxSum;
 
+	private: System::Windows::Forms::TextBox^ textBox1;
+	public:
+	private: System::Windows::Forms::Button^ buttonDifr;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::Button^ buttonProd;
+	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::Button^ buttonQuo;
 
 	private:
 		/// <summary>
@@ -115,6 +135,24 @@ namespace ComplexUI2
 			this->textBoxPfaseb = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxModb = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxShowb = (gcnew System::Windows::Forms::TextBox());
+			this->buttonInc = (gcnew System::Windows::Forms::Button());
+			this->buttonSum = (gcnew System::Windows::Forms::Button());
+			this->buttonLess = (gcnew System::Windows::Forms::Button());
+			this->buttonAbove = (gcnew System::Windows::Forms::Button());
+			this->buttonComp = (gcnew System::Windows::Forms::Button());
+			this->buttonEq = (gcnew System::Windows::Forms::Button());
+			this->textBoxInc = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxComp = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxLess = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxAbove = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxEq = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxSum = (gcnew System::Windows::Forms::TextBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->buttonDifr = (gcnew System::Windows::Forms::Button());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->buttonProd = (gcnew System::Windows::Forms::Button());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->buttonQuo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -131,9 +169,9 @@ namespace ComplexUI2
 			// 
 			// buttonShow
 			// 
-			this->buttonShow->Location = System::Drawing::Point(18, 200);
+			this->buttonShow->Location = System::Drawing::Point(18, 182);
 			this->buttonShow->Name = L"buttonShow";
-			this->buttonShow->Size = System::Drawing::Size(267, 90);
+			this->buttonShow->Size = System::Drawing::Size(267, 30);
 			this->buttonShow->TabIndex = 1;
 			this->buttonShow->Text = L"Вывести число";
 			this->buttonShow->UseVisualStyleBackColor = true;
@@ -141,9 +179,9 @@ namespace ComplexUI2
 			// 
 			// buttonAbs
 			// 
-			this->buttonAbs->Location = System::Drawing::Point(18, 296);
+			this->buttonAbs->Location = System::Drawing::Point(18, 218);
 			this->buttonAbs->Name = L"buttonAbs";
-			this->buttonAbs->Size = System::Drawing::Size(267, 90);
+			this->buttonAbs->Size = System::Drawing::Size(267, 26);
 			this->buttonAbs->TabIndex = 2;
 			this->buttonAbs->Text = L"Вычеслить модуль";
 			this->buttonAbs->UseVisualStyleBackColor = true;
@@ -151,9 +189,9 @@ namespace ComplexUI2
 			// 
 			// buttonPhase
 			// 
-			this->buttonPhase->Location = System::Drawing::Point(18, 392);
+			this->buttonPhase->Location = System::Drawing::Point(18, 250);
 			this->buttonPhase->Name = L"buttonPhase";
-			this->buttonPhase->Size = System::Drawing::Size(267, 90);
+			this->buttonPhase->Size = System::Drawing::Size(267, 30);
 			this->buttonPhase->TabIndex = 3;
 			this->buttonPhase->Text = L"Вычеслить фазу";
 			this->buttonPhase->UseVisualStyleBackColor = true;
@@ -176,7 +214,7 @@ namespace ComplexUI2
 			this->groupBox1->Controls->Add(this->buttonEnter);
 			this->groupBox1->Location = System::Drawing::Point(12, 56);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(1162, 123);
+			this->groupBox1->Size = System::Drawing::Size(1094, 123);
 			this->groupBox1->TabIndex = 4;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Задать число";
@@ -184,7 +222,7 @@ namespace ComplexUI2
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(769, 92);
+			this->label4->Location = System::Drawing::Point(706, 92);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(32, 13);
 			this->label4->TabIndex = 12;
@@ -192,7 +230,7 @@ namespace ComplexUI2
 			// 
 			// textBoxCombb
 			// 
-			this->textBoxCombb->Location = System::Drawing::Point(807, 89);
+			this->textBoxCombb->Location = System::Drawing::Point(744, 89);
 			this->textBoxCombb->Name = L"textBoxCombb";
 			this->textBoxCombb->Size = System::Drawing::Size(339, 20);
 			this->textBoxCombb->TabIndex = 11;
@@ -200,7 +238,7 @@ namespace ComplexUI2
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(749, 58);
+			this->label5->Location = System::Drawing::Point(686, 58);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(52, 13);
 			this->label5->TabIndex = 10;
@@ -209,7 +247,7 @@ namespace ComplexUI2
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(772, 22);
+			this->label6->Location = System::Drawing::Point(709, 22);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(29, 13);
 			this->label6->TabIndex = 9;
@@ -217,14 +255,14 @@ namespace ComplexUI2
 			// 
 			// textBoxImagb
 			// 
-			this->textBoxImagb->Location = System::Drawing::Point(807, 55);
+			this->textBoxImagb->Location = System::Drawing::Point(744, 55);
 			this->textBoxImagb->Name = L"textBoxImagb";
 			this->textBoxImagb->Size = System::Drawing::Size(339, 20);
 			this->textBoxImagb->TabIndex = 8;
 			// 
 			// textBoxRealb
 			// 
-			this->textBoxRealb->Location = System::Drawing::Point(807, 19);
+			this->textBoxRealb->Location = System::Drawing::Point(744, 19);
 			this->textBoxRealb->Name = L"textBoxRealb";
 			this->textBoxRealb->Size = System::Drawing::Size(339, 20);
 			this->textBoxRealb->TabIndex = 7;
@@ -232,7 +270,7 @@ namespace ComplexUI2
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(360, 92);
+			this->label3->Location = System::Drawing::Point(297, 92);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(32, 13);
 			this->label3->TabIndex = 6;
@@ -240,7 +278,7 @@ namespace ComplexUI2
 			// 
 			// textBoxComb
 			// 
-			this->textBoxComb->Location = System::Drawing::Point(398, 89);
+			this->textBoxComb->Location = System::Drawing::Point(335, 89);
 			this->textBoxComb->Name = L"textBoxComb";
 			this->textBoxComb->Size = System::Drawing::Size(339, 20);
 			this->textBoxComb->TabIndex = 5;
@@ -249,7 +287,7 @@ namespace ComplexUI2
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(340, 58);
+			this->label2->Location = System::Drawing::Point(277, 58);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(52, 13);
 			this->label2->TabIndex = 4;
@@ -258,7 +296,7 @@ namespace ComplexUI2
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(363, 22);
+			this->label1->Location = System::Drawing::Point(300, 22);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(29, 13);
 			this->label1->TabIndex = 3;
@@ -267,14 +305,14 @@ namespace ComplexUI2
 			// 
 			// textBoxImag
 			// 
-			this->textBoxImag->Location = System::Drawing::Point(398, 55);
+			this->textBoxImag->Location = System::Drawing::Point(335, 55);
 			this->textBoxImag->Name = L"textBoxImag";
 			this->textBoxImag->Size = System::Drawing::Size(339, 20);
 			this->textBoxImag->TabIndex = 2;
 			// 
 			// textBoxReal
 			// 
-			this->textBoxReal->Location = System::Drawing::Point(398, 19);
+			this->textBoxReal->Location = System::Drawing::Point(335, 19);
 			this->textBoxReal->Name = L"textBoxReal";
 			this->textBoxReal->Size = System::Drawing::Size(339, 20);
 			this->textBoxReal->TabIndex = 1;
@@ -297,7 +335,7 @@ namespace ComplexUI2
 			// 
 			// textBoxShow
 			// 
-			this->textBoxShow->Location = System::Drawing::Point(410, 236);
+			this->textBoxShow->Location = System::Drawing::Point(347, 188);
 			this->textBoxShow->Name = L"textBoxShow";
 			this->textBoxShow->Size = System::Drawing::Size(339, 20);
 			this->textBoxShow->TabIndex = 6;
@@ -305,45 +343,208 @@ namespace ComplexUI2
 			// 
 			// textBoxMod
 			// 
-			this->textBoxMod->Location = System::Drawing::Point(410, 332);
+			this->textBoxMod->Location = System::Drawing::Point(347, 222);
 			this->textBoxMod->Name = L"textBoxMod";
 			this->textBoxMod->Size = System::Drawing::Size(339, 20);
 			this->textBoxMod->TabIndex = 7;
 			// 
 			// textBoxPfase
 			// 
-			this->textBoxPfase->Location = System::Drawing::Point(410, 428);
+			this->textBoxPfase->Location = System::Drawing::Point(347, 256);
 			this->textBoxPfase->Name = L"textBoxPfase";
 			this->textBoxPfase->Size = System::Drawing::Size(339, 20);
 			this->textBoxPfase->TabIndex = 8;
 			// 
 			// textBoxPfaseb
 			// 
-			this->textBoxPfaseb->Location = System::Drawing::Point(819, 428);
+			this->textBoxPfaseb->Location = System::Drawing::Point(756, 256);
 			this->textBoxPfaseb->Name = L"textBoxPfaseb";
 			this->textBoxPfaseb->Size = System::Drawing::Size(339, 20);
 			this->textBoxPfaseb->TabIndex = 11;
 			// 
 			// textBoxModb
 			// 
-			this->textBoxModb->Location = System::Drawing::Point(819, 332);
+			this->textBoxModb->Location = System::Drawing::Point(756, 224);
 			this->textBoxModb->Name = L"textBoxModb";
 			this->textBoxModb->Size = System::Drawing::Size(339, 20);
 			this->textBoxModb->TabIndex = 10;
 			// 
 			// textBoxShowb
 			// 
-			this->textBoxShowb->Location = System::Drawing::Point(819, 236);
+			this->textBoxShowb->Location = System::Drawing::Point(756, 188);
 			this->textBoxShowb->Name = L"textBoxShowb";
 			this->textBoxShowb->Size = System::Drawing::Size(339, 20);
 			this->textBoxShowb->TabIndex = 9;
+			// 
+			// buttonInc
+			// 
+			this->buttonInc->Location = System::Drawing::Point(18, 400);
+			this->buttonInc->Name = L"buttonInc";
+			this->buttonInc->Size = System::Drawing::Size(267, 23);
+			this->buttonInc->TabIndex = 12;
+			this->buttonInc->Text = L"Увеличить";
+			this->buttonInc->UseVisualStyleBackColor = true;
+			// 
+			// buttonSum
+			// 
+			this->buttonSum->Location = System::Drawing::Point(18, 429);
+			this->buttonSum->Name = L"buttonSum";
+			this->buttonSum->Size = System::Drawing::Size(267, 23);
+			this->buttonSum->TabIndex = 13;
+			this->buttonSum->Text = L"Сумма";
+			this->buttonSum->UseVisualStyleBackColor = true;
+			// 
+			// buttonLess
+			// 
+			this->buttonLess->Location = System::Drawing::Point(600, 429);
+			this->buttonLess->Name = L"buttonLess";
+			this->buttonLess->Size = System::Drawing::Size(267, 23);
+			this->buttonLess->TabIndex = 14;
+			this->buttonLess->Text = L"Сравнение <";
+			this->buttonLess->UseVisualStyleBackColor = true;
+			// 
+			// buttonAbove
+			// 
+			this->buttonAbove->Location = System::Drawing::Point(600, 400);
+			this->buttonAbove->Name = L"buttonAbove";
+			this->buttonAbove->Size = System::Drawing::Size(267, 23);
+			this->buttonAbove->TabIndex = 15;
+			this->buttonAbove->Text = L"Сравнение >";
+			this->buttonAbove->UseVisualStyleBackColor = true;
+			// 
+			// buttonComp
+			// 
+			this->buttonComp->Location = System::Drawing::Point(600, 458);
+			this->buttonComp->Name = L"buttonComp";
+			this->buttonComp->Size = System::Drawing::Size(267, 24);
+			this->buttonComp->TabIndex = 16;
+			this->buttonComp->Text = L"Сравнение ==";
+			this->buttonComp->UseVisualStyleBackColor = true;
+			// 
+			// buttonEq
+			// 
+			this->buttonEq->Location = System::Drawing::Point(600, 490);
+			this->buttonEq->Name = L"buttonEq";
+			this->buttonEq->Size = System::Drawing::Size(267, 23);
+			this->buttonEq->TabIndex = 17;
+			this->buttonEq->Text = L"Присвоение";
+			this->buttonEq->UseVisualStyleBackColor = true;
+			// 
+			// textBoxInc
+			// 
+			this->textBoxInc->Location = System::Drawing::Point(347, 403);
+			this->textBoxInc->Name = L"textBoxInc";
+			this->textBoxInc->Size = System::Drawing::Size(178, 20);
+			this->textBoxInc->TabIndex = 18;
+			this->textBoxInc->TextChanged += gcnew System::EventHandler(this, &MyForm::textBoxInc_TextChanged);
+			// 
+			// textBoxComp
+			// 
+			this->textBoxComp->Location = System::Drawing::Point(917, 462);
+			this->textBoxComp->Name = L"textBoxComp";
+			this->textBoxComp->Size = System::Drawing::Size(178, 20);
+			this->textBoxComp->TabIndex = 19;
+			// 
+			// textBoxLess
+			// 
+			this->textBoxLess->Location = System::Drawing::Point(917, 432);
+			this->textBoxLess->Name = L"textBoxLess";
+			this->textBoxLess->Size = System::Drawing::Size(178, 20);
+			this->textBoxLess->TabIndex = 20;
+			// 
+			// textBoxAbove
+			// 
+			this->textBoxAbove->Location = System::Drawing::Point(917, 403);
+			this->textBoxAbove->Name = L"textBoxAbove";
+			this->textBoxAbove->Size = System::Drawing::Size(178, 20);
+			this->textBoxAbove->TabIndex = 21;
+			// 
+			// textBoxEq
+			// 
+			this->textBoxEq->Location = System::Drawing::Point(917, 492);
+			this->textBoxEq->Name = L"textBoxEq";
+			this->textBoxEq->Size = System::Drawing::Size(178, 20);
+			this->textBoxEq->TabIndex = 22;
+			// 
+			// textBoxSum
+			// 
+			this->textBoxSum->Location = System::Drawing::Point(347, 432);
+			this->textBoxSum->Name = L"textBoxSum";
+			this->textBoxSum->Size = System::Drawing::Size(178, 20);
+			this->textBoxSum->TabIndex = 23;
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(347, 461);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(178, 20);
+			this->textBox1->TabIndex = 25;
+			// 
+			// buttonDifr
+			// 
+			this->buttonDifr->Location = System::Drawing::Point(18, 458);
+			this->buttonDifr->Name = L"buttonDifr";
+			this->buttonDifr->Size = System::Drawing::Size(267, 23);
+			this->buttonDifr->TabIndex = 24;
+			this->buttonDifr->Text = L"Разность";
+			this->buttonDifr->UseVisualStyleBackColor = true;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(347, 490);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(178, 20);
+			this->textBox2->TabIndex = 27;
+			// 
+			// buttonProd
+			// 
+			this->buttonProd->Location = System::Drawing::Point(18, 487);
+			this->buttonProd->Name = L"buttonProd";
+			this->buttonProd->Size = System::Drawing::Size(267, 23);
+			this->buttonProd->TabIndex = 26;
+			this->buttonProd->Text = L"Произведение";
+			this->buttonProd->UseVisualStyleBackColor = true;
+			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(347, 519);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(178, 20);
+			this->textBox3->TabIndex = 29;
+			// 
+			// buttonQuo
+			// 
+			this->buttonQuo->Location = System::Drawing::Point(18, 516);
+			this->buttonQuo->Name = L"buttonQuo";
+			this->buttonQuo->Size = System::Drawing::Size(267, 23);
+			this->buttonQuo->TabIndex = 28;
+			this->buttonQuo->Text = L"Часное";
+			this->buttonQuo->UseVisualStyleBackColor = true;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1186, 517);
+			this->ClientSize = System::Drawing::Size(1186, 625);
 			this->ControlBox = false;
+			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->buttonQuo);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->buttonProd);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->buttonDifr);
+			this->Controls->Add(this->textBoxSum);
+			this->Controls->Add(this->textBoxEq);
+			this->Controls->Add(this->textBoxAbove);
+			this->Controls->Add(this->textBoxLess);
+			this->Controls->Add(this->textBoxComp);
+			this->Controls->Add(this->textBoxInc);
+			this->Controls->Add(this->buttonEq);
+			this->Controls->Add(this->buttonComp);
+			this->Controls->Add(this->buttonAbove);
+			this->Controls->Add(this->buttonLess);
+			this->Controls->Add(this->buttonSum);
+			this->Controls->Add(this->buttonInc);
 			this->Controls->Add(this->textBoxPfaseb);
 			this->Controls->Add(this->textBoxModb);
 			this->Controls->Add(this->textBoxShowb);
@@ -356,8 +557,6 @@ namespace ComplexUI2
 			this->Controls->Add(this->buttonShow);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->MaximumSize = System::Drawing::Size(1202, 556);
-			this->MinimumSize = System::Drawing::Size(1202, 556);
 			this->Name = L"MyForm";
 			this->Text = L" ";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -444,6 +643,8 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 private: System::Void textBoxShow_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void textBoxComb_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBoxInc_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
