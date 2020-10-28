@@ -58,14 +58,14 @@ void Complex::printim()
 {
     printf("/n i*%f /n", im);
 }
-String^ Complex:: operator +=(Complex k)
+String^ Complex:: operator +=(Complex* k)
 {
     double a, b, c, d;
     c = Convert::ToDouble(this->getre());
-    d = Convert::ToDouble(k.getre());
+    d = Convert::ToDouble(k->getre());
     a = c + d;
     c = Convert::ToDouble(this->getim());
-    d = Convert::ToDouble(k.getim());
+    d = Convert::ToDouble(k->getim());
     b = c + d;
     this->setall(a, b);
     return (Convert::ToString(this));

@@ -88,13 +88,16 @@ namespace ComplexUI2
 	private: System::Windows::Forms::TextBox^ textBoxAbove;
 	private: System::Windows::Forms::TextBox^ textBoxEq;
 	private: System::Windows::Forms::TextBox^ textBoxSum;
+	private: System::Windows::Forms::TextBox^ textBoxDifr;
 
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	public:
 	private: System::Windows::Forms::Button^ buttonDifr;
-	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ textBoxProd;
+
 	private: System::Windows::Forms::Button^ buttonProd;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ textBoxQuo;
+
 	private: System::Windows::Forms::Button^ buttonQuo;
 
 	private:
@@ -147,11 +150,11 @@ namespace ComplexUI2
 			this->textBoxAbove = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxEq = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxSum = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxDifr = (gcnew System::Windows::Forms::TextBox());
 			this->buttonDifr = (gcnew System::Windows::Forms::Button());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxProd = (gcnew System::Windows::Forms::TextBox());
 			this->buttonProd = (gcnew System::Windows::Forms::Button());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxQuo = (gcnew System::Windows::Forms::TextBox());
 			this->buttonQuo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
@@ -384,6 +387,7 @@ namespace ComplexUI2
 			this->buttonInc->TabIndex = 12;
 			this->buttonInc->Text = L"Увеличить";
 			this->buttonInc->UseVisualStyleBackColor = true;
+			this->buttonInc->Click += gcnew System::EventHandler(this, &MyForm::buttonInc_Click);
 			// 
 			// buttonSum
 			// 
@@ -473,12 +477,12 @@ namespace ComplexUI2
 			this->textBoxSum->Size = System::Drawing::Size(178, 20);
 			this->textBoxSum->TabIndex = 23;
 			// 
-			// textBox1
+			// textBoxDifr
 			// 
-			this->textBox1->Location = System::Drawing::Point(347, 461);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(178, 20);
-			this->textBox1->TabIndex = 25;
+			this->textBoxDifr->Location = System::Drawing::Point(347, 461);
+			this->textBoxDifr->Name = L"textBoxDifr";
+			this->textBoxDifr->Size = System::Drawing::Size(178, 20);
+			this->textBoxDifr->TabIndex = 25;
 			// 
 			// buttonDifr
 			// 
@@ -489,12 +493,12 @@ namespace ComplexUI2
 			this->buttonDifr->Text = L"Разность";
 			this->buttonDifr->UseVisualStyleBackColor = true;
 			// 
-			// textBox2
+			// textBoxProd
 			// 
-			this->textBox2->Location = System::Drawing::Point(347, 490);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(178, 20);
-			this->textBox2->TabIndex = 27;
+			this->textBoxProd->Location = System::Drawing::Point(347, 490);
+			this->textBoxProd->Name = L"textBoxProd";
+			this->textBoxProd->Size = System::Drawing::Size(178, 20);
+			this->textBoxProd->TabIndex = 27;
 			// 
 			// buttonProd
 			// 
@@ -505,12 +509,12 @@ namespace ComplexUI2
 			this->buttonProd->Text = L"Произведение";
 			this->buttonProd->UseVisualStyleBackColor = true;
 			// 
-			// textBox3
+			// textBoxQuo
 			// 
-			this->textBox3->Location = System::Drawing::Point(347, 519);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(178, 20);
-			this->textBox3->TabIndex = 29;
+			this->textBoxQuo->Location = System::Drawing::Point(347, 519);
+			this->textBoxQuo->Name = L"textBoxQuo";
+			this->textBoxQuo->Size = System::Drawing::Size(178, 20);
+			this->textBoxQuo->TabIndex = 29;
 			// 
 			// buttonQuo
 			// 
@@ -527,11 +531,11 @@ namespace ComplexUI2
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1186, 625);
 			this->ControlBox = false;
-			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->textBoxQuo);
 			this->Controls->Add(this->buttonQuo);
-			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBoxProd);
 			this->Controls->Add(this->buttonProd);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->textBoxDifr);
 			this->Controls->Add(this->buttonDifr);
 			this->Controls->Add(this->textBoxSum);
 			this->Controls->Add(this->textBoxEq);
@@ -645,6 +649,19 @@ private: System::Void textBoxShow_TextChanged(System::Object^ sender, System::Ev
 private: System::Void textBoxComb_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void textBoxInc_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	Complex* tmp;
+	String^ s = textBoxComb->Text;
+	if (textBoxInc->Text->Length < 1)
+		return;
+	String^ token1 = s->Split('+')[0]; // 0- до +     1- после
+	String^ token2 = s->Split('*')[1];
+	double r = Convert::ToDouble(token1);
+	double i = Convert::ToDouble(token2);
+	tmp->setall(r, i);
+	a += tmp;
 }
 };
 }

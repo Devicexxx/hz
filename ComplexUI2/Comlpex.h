@@ -24,7 +24,7 @@ public:
     void print();
     void printre();
     void printim();
-    String^ Complex:: operator +=(Complex k);
+    String^ Complex:: operator +=(Complex* k);
     String^ Complex:: operator -=(Complex k);
     String^ Complex:: operator +(Complex k);
     String^ Complex:: operator -(Complex k);
