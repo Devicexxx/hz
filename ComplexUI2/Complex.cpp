@@ -134,3 +134,49 @@ String^ Complex:: operator /(Complex k)
     l->setall(re, im);
     return (Convert::ToString(l));
 }
+bool Complex:: operator >(Complex k)
+{
+    double a, a1, b, b1, l1, l;
+    a = Convert::ToDouble(this->getre());
+    a1 = Convert::ToDouble(k.getre());
+    b = Convert::ToDouble(this->getim());
+    b1 = Convert::ToDouble(k.getim());
+    l = sqrt(a * a + b * b);
+    l1 = sqrt(a1 * a1 + b1 * b1);
+    if (l > l1)
+        return true;
+    return false;
+}
+bool Complex:: operator <(Complex k)
+{
+    double a, a1, b, b1, l1, l;
+    a = Convert::ToDouble(this->getre());
+    a1 = Convert::ToDouble(k.getre());
+    b = Convert::ToDouble(this->getim());
+    b1 = Convert::ToDouble(k.getim());
+    l = sqrt(a * a + b * b);
+    l1 = sqrt(a1 * a1 + b1 * b1);
+    if (l < l1)
+        return true;
+    return false;
+}
+bool Complex:: operator ==(Complex k)
+{
+    double a, a1, b, b1, l1, l;
+    a = Convert::ToDouble(this->getre());
+    a1 = Convert::ToDouble(k.getre());
+    b = Convert::ToDouble(this->getim());
+    b1 = Convert::ToDouble(k.getim());
+    l = sqrt(a * a + b * b);
+    l1 = sqrt(a1 * a1 + b1 * b1);
+    if (l == l1)
+        return true;
+    return false;
+}
+String^ Complex:: operator =(Complex k)
+{
+    double a, a1, b, b1, re, im;
+    this->setre(Convert::ToDouble(k.getre()));
+    this->setim(Convert::ToDouble(k.getim()));
+    return(Convert::ToString(this));
+}

@@ -30,4 +30,8 @@ public:
     String^ Complex:: operator -(Complex k);
     String^ Complex:: operator *(Complex k);
     String^ Complex:: operator /(Complex k);
+    bool Complex:: operator >(Complex k);
+    bool Complex:: operator <(Complex k);
+    bool Complex:: operator ==(Complex k);
+    String^ Complex:: operator =(Complex k);
 };

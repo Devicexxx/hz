@@ -591,7 +591,7 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		if (textBoxComb->Text->Length < 1)
 			return;
 		String^ s = textBoxComb->Text;   //a+i*5
-		String^ delimiter = "+";
+		//String^ delimiter = "+";
 		String^ token1 = s->Split('+')[0]; // 0- до +     1- после
 		String^ token2 = s->Split('*')[1];
 		double r = Convert::ToDouble(token1);
