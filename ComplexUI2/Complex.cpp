@@ -82,3 +82,55 @@ String^ Complex:: operator -=(Complex k)
     this->setall(a, b);
     return (Convert::ToString(this));
 }
+String^ Complex:: operator +(Complex k)
+{
+    Complex* l;
+    double a, b, c, d;
+    c = Convert::ToDouble(this->getre());
+    d = Convert::ToDouble(k.getre());
+    a = c + d;
+    c = Convert::ToDouble(this->getim());
+    d = Convert::ToDouble(k.getim());
+    b = c + d;
+    l->setall(a, b);
+    return (Convert::ToString(l));
+}
+String^ Complex:: operator -(Complex k)
+{
+    Complex* l;
+    double a, b, c, d;
+    c = Convert::ToDouble(this->getre());
+    d = Convert::ToDouble(k.getre());
+    a = c - d;
+    c = Convert::ToDouble(this->getim());
+    d = Convert::ToDouble(k.getim());
+    b = c - d;
+    l->setall(a, b);
+    return (Convert::ToString(l));
+}
+String^ Complex:: operator *(Complex k)
+{
+    Complex* l;
+    double a, a1, b, b1, re, im;
+    a = Convert::ToDouble(this->getre());
+    a1 = Convert::ToDouble(k.getre());
+    b = Convert::ToDouble(this->getim());
+    b1 = Convert::ToDouble(k.getim());
+    re = a * a1 - b * b1;
+    im = a * b1 + b * a1;
+    l->setall(re, im);
+    return (Convert::ToString(l));
+}
+String^ Complex:: operator /(Complex k)
+{
+    Complex* l;
+    double a, a1, b, b1, re, im;
+    a = Convert::ToDouble(this->getre());
+    a1 = Convert::ToDouble(k.getre());
+    b = Convert::ToDouble(this->getim());
+    b1 = Convert::ToDouble(k.getim());
+    re = (a * a1 + b * b1) / (a1 * a1 * b1 * b1);
+    im = (a * b1 - b * a1) / (a1 * a1 * b1 * b1);
+    l->setall(re, im);
+    return (Convert::ToString(l));
+}
