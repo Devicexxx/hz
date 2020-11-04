@@ -58,19 +58,18 @@ void Complex::printim()
 {
     printf("/n i*%f /n", im);
 }
-String^ Complex:: operator +=(Complex* k)
+void Complex:: operator +=(Complex& k)
 {
     double a, b, c, d;
     c = Convert::ToDouble(this->getre());
-    d = Convert::ToDouble(k->getre());
+    d = Convert::ToDouble(k.getre());
     a = c + d;
     c = Convert::ToDouble(this->getim());
-    d = Convert::ToDouble(k->getim());
+    d = Convert::ToDouble(k.getim());
     b = c + d;
     this->setall(a, b);
-    return (Convert::ToString(this));
 }
-String^ Complex:: operator -=(Complex k)
+void Complex:: operator -=(Complex& k)
 {
     double a, b, c, d;
     c = Convert::ToDouble(this->getre());
@@ -80,11 +79,10 @@ String^ Complex:: operator -=(Complex k)
     d = Convert::ToDouble(k.getim());
     b = c - d;
     this->setall(a, b);
-    return (Convert::ToString(this));
 }
-String^ Complex:: operator +(Complex k)
+void Complex:: operator +(Complex& k)
 {
-    Complex* l;
+    Complex* l = new Complex();;
     double a, b, c, d;
     c = Convert::ToDouble(this->getre());
     d = Convert::ToDouble(k.getre());
@@ -93,11 +91,10 @@ String^ Complex:: operator +(Complex k)
     d = Convert::ToDouble(k.getim());
     b = c + d;
     l->setall(a, b);
-    return (Convert::ToString(l));
 }
-String^ Complex:: operator -(Complex k)
+void Complex:: operator -(Complex& k)
 {
-    Complex* l;
+    Complex* l = new Complex();;
     double a, b, c, d;
     c = Convert::ToDouble(this->getre());
     d = Convert::ToDouble(k.getre());
@@ -106,11 +103,10 @@ String^ Complex:: operator -(Complex k)
     d = Convert::ToDouble(k.getim());
     b = c - d;
     l->setall(a, b);
-    return (Convert::ToString(l));
 }
-String^ Complex:: operator *(Complex k)
+void Complex:: operator *(Complex& k)
 {
-    Complex* l;
+    Complex* l = new Complex();;
     double a, a1, b, b1, re, im;
     a = Convert::ToDouble(this->getre());
     a1 = Convert::ToDouble(k.getre());
@@ -119,11 +115,10 @@ String^ Complex:: operator *(Complex k)
     re = a * a1 - b * b1;
     im = a * b1 + b * a1;
     l->setall(re, im);
-    return (Convert::ToString(l));
 }
-String^ Complex:: operator /(Complex k)
+void Complex:: operator /(Complex& k)
 {
-    Complex* l;
+    Complex* l = new Complex();;
     double a, a1, b, b1, re, im;
     a = Convert::ToDouble(this->getre());
     a1 = Convert::ToDouble(k.getre());
@@ -132,9 +127,8 @@ String^ Complex:: operator /(Complex k)
     re = (a * a1 + b * b1) / (a1 * a1 * b1 * b1);
     im = (a * b1 - b * a1) / (a1 * a1 * b1 * b1);
     l->setall(re, im);
-    return (Convert::ToString(l));
 }
-bool Complex:: operator >(Complex k)
+bool Complex:: operator >(Complex& k)
 {
     double a, a1, b, b1, l1, l;
     a = Convert::ToDouble(this->getre());
@@ -147,7 +141,7 @@ bool Complex:: operator >(Complex k)
         return true;
     return false;
 }
-bool Complex:: operator <(Complex k)
+bool Complex:: operator <(Complex& k)
 {
     double a, a1, b, b1, l1, l;
     a = Convert::ToDouble(this->getre());
@@ -160,7 +154,7 @@ bool Complex:: operator <(Complex k)
         return true;
     return false;
 }
-bool Complex:: operator ==(Complex k)
+bool Complex:: operator ==(Complex& k)
 {
     double a, a1, b, b1, l1, l;
     a = Convert::ToDouble(this->getre());
@@ -173,10 +167,9 @@ bool Complex:: operator ==(Complex k)
         return true;
     return false;
 }
-String^ Complex:: operator =(Complex k)
+void Complex:: operator =(Complex& k)
 {
     double a, a1, b, b1, re, im;
     this->setre(Convert::ToDouble(k.getre()));
     this->setim(Convert::ToDouble(k.getim()));
-    return(Convert::ToString(this));
 }
