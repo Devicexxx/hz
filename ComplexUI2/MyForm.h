@@ -689,7 +689,7 @@ private: System::Void pictureBox1_Paint(System::Object^ sender, System::Windows:
 private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^ e) 
 {
 	Complex* tmp = new Complex();
-	String^ s = textBoxComb->Text;
+	String^ s = textBoxInc->Text;
 	if (textBoxInc->Text->Length < 1)
 		return;
 	String^ token1 = s->Split('+')[0]; // 0- до +     1- после
@@ -697,7 +697,7 @@ private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^
 	double r = Convert::ToDouble(token1);
 	double i = Convert::ToDouble(token2);
 	tmp->setall(r, i);
-	a += tmp;
+	*a += *tmp;
 }
 private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArgs^ e)
 {
