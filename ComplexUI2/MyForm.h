@@ -23,6 +23,13 @@ namespace ComplexUI2
 	public:
 		//float x, c, r, i;
 		Complex* a;
+	private: System::Windows::Forms::Button^ buttonEqb;
+	public:
+
+	public:
+
+	public:
+	public:
 		Complex* b;
 		MyForm(void)
 		{
@@ -83,12 +90,13 @@ namespace ComplexUI2
 	private: System::Windows::Forms::Button^ buttonLess;
 	private: System::Windows::Forms::Button^ buttonAbove;
 	private: System::Windows::Forms::Button^ buttonComp;
-	private: System::Windows::Forms::Button^ buttonEq;
+	private: System::Windows::Forms::Button^ buttonEqa;
+
 	private: System::Windows::Forms::TextBox^ textBoxInc;
 	private: System::Windows::Forms::TextBox^ textBoxComp;
 	private: System::Windows::Forms::TextBox^ textBoxLess;
 	private: System::Windows::Forms::TextBox^ textBoxAbove;
-	private: System::Windows::Forms::TextBox^ textBoxEq;
+
 	private: System::Windows::Forms::TextBox^ textBoxSum;
 	private: System::Windows::Forms::TextBox^ textBoxDifr;
 
@@ -106,6 +114,8 @@ namespace ComplexUI2
 	public:
 	private: System::Windows::Forms::Button^ buttonPrint;
 	private:
+
+	private: System::Windows::Forms::TextBox^ textBoxIncb;
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
@@ -148,12 +158,11 @@ namespace ComplexUI2
 			this->buttonLess = (gcnew System::Windows::Forms::Button());
 			this->buttonAbove = (gcnew System::Windows::Forms::Button());
 			this->buttonComp = (gcnew System::Windows::Forms::Button());
-			this->buttonEq = (gcnew System::Windows::Forms::Button());
+			this->buttonEqa = (gcnew System::Windows::Forms::Button());
 			this->textBoxInc = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxComp = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxLess = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxAbove = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxEq = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxSum = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxDifr = (gcnew System::Windows::Forms::TextBox());
 			this->buttonDifr = (gcnew System::Windows::Forms::Button());
@@ -163,6 +172,8 @@ namespace ComplexUI2
 			this->buttonQuo = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->buttonPrint = (gcnew System::Windows::Forms::Button());
+			this->textBoxIncb = (gcnew System::Windows::Forms::TextBox());
+			this->buttonEqb = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -389,9 +400,9 @@ namespace ComplexUI2
 			// 
 			// buttonInc
 			// 
-			this->buttonInc->Location = System::Drawing::Point(18, 400);
+			this->buttonInc->Location = System::Drawing::Point(18, 347);
 			this->buttonInc->Name = L"buttonInc";
-			this->buttonInc->Size = System::Drawing::Size(267, 23);
+			this->buttonInc->Size = System::Drawing::Size(267, 49);
 			this->buttonInc->TabIndex = 12;
 			this->buttonInc->Text = L"Увеличить";
 			this->buttonInc->UseVisualStyleBackColor = true;
@@ -405,6 +416,7 @@ namespace ComplexUI2
 			this->buttonSum->TabIndex = 13;
 			this->buttonSum->Text = L"Сумма";
 			this->buttonSum->UseVisualStyleBackColor = true;
+			this->buttonSum->Click += gcnew System::EventHandler(this, &MyForm::buttonSum_Click);
 			// 
 			// buttonLess
 			// 
@@ -412,8 +424,9 @@ namespace ComplexUI2
 			this->buttonLess->Name = L"buttonLess";
 			this->buttonLess->Size = System::Drawing::Size(267, 23);
 			this->buttonLess->TabIndex = 14;
-			this->buttonLess->Text = L"Сравнение <";
+			this->buttonLess->Text = L"Сравнение a<b";
 			this->buttonLess->UseVisualStyleBackColor = true;
+			this->buttonLess->Click += gcnew System::EventHandler(this, &MyForm::buttonLess_Click);
 			// 
 			// buttonAbove
 			// 
@@ -421,8 +434,9 @@ namespace ComplexUI2
 			this->buttonAbove->Name = L"buttonAbove";
 			this->buttonAbove->Size = System::Drawing::Size(267, 23);
 			this->buttonAbove->TabIndex = 15;
-			this->buttonAbove->Text = L"Сравнение >";
+			this->buttonAbove->Text = L"Сравнение a>b";
 			this->buttonAbove->UseVisualStyleBackColor = true;
+			this->buttonAbove->Click += gcnew System::EventHandler(this, &MyForm::buttonAbove_Click);
 			// 
 			// buttonComp
 			// 
@@ -430,21 +444,23 @@ namespace ComplexUI2
 			this->buttonComp->Name = L"buttonComp";
 			this->buttonComp->Size = System::Drawing::Size(267, 24);
 			this->buttonComp->TabIndex = 16;
-			this->buttonComp->Text = L"Сравнение ==";
+			this->buttonComp->Text = L"Сравнение a==b";
 			this->buttonComp->UseVisualStyleBackColor = true;
+			this->buttonComp->Click += gcnew System::EventHandler(this, &MyForm::buttonComp_Click);
 			// 
-			// buttonEq
+			// buttonEqa
 			// 
-			this->buttonEq->Location = System::Drawing::Point(476, 490);
-			this->buttonEq->Name = L"buttonEq";
-			this->buttonEq->Size = System::Drawing::Size(267, 23);
-			this->buttonEq->TabIndex = 17;
-			this->buttonEq->Text = L"Присвоение";
-			this->buttonEq->UseVisualStyleBackColor = true;
+			this->buttonEqa->Location = System::Drawing::Point(476, 490);
+			this->buttonEqa->Name = L"buttonEqa";
+			this->buttonEqa->Size = System::Drawing::Size(267, 23);
+			this->buttonEqa->TabIndex = 17;
+			this->buttonEqa->Text = L"Присвоение a к b";
+			this->buttonEqa->UseVisualStyleBackColor = true;
+			this->buttonEqa->Click += gcnew System::EventHandler(this, &MyForm::buttonEqa_Click);
 			// 
 			// textBoxInc
 			// 
-			this->textBoxInc->Location = System::Drawing::Point(292, 403);
+			this->textBoxInc->Location = System::Drawing::Point(292, 350);
 			this->textBoxInc->Name = L"textBoxInc";
 			this->textBoxInc->Size = System::Drawing::Size(178, 20);
 			this->textBoxInc->TabIndex = 18;
@@ -471,13 +487,6 @@ namespace ComplexUI2
 			this->textBoxAbove->Size = System::Drawing::Size(178, 20);
 			this->textBoxAbove->TabIndex = 21;
 			// 
-			// textBoxEq
-			// 
-			this->textBoxEq->Location = System::Drawing::Point(749, 492);
-			this->textBoxEq->Name = L"textBoxEq";
-			this->textBoxEq->Size = System::Drawing::Size(178, 20);
-			this->textBoxEq->TabIndex = 22;
-			// 
 			// textBoxSum
 			// 
 			this->textBoxSum->Location = System::Drawing::Point(292, 432);
@@ -500,6 +509,7 @@ namespace ComplexUI2
 			this->buttonDifr->TabIndex = 24;
 			this->buttonDifr->Text = L"Разность";
 			this->buttonDifr->UseVisualStyleBackColor = true;
+			this->buttonDifr->Click += gcnew System::EventHandler(this, &MyForm::buttonDifr_Click);
 			// 
 			// textBoxProd
 			// 
@@ -516,6 +526,7 @@ namespace ComplexUI2
 			this->buttonProd->TabIndex = 26;
 			this->buttonProd->Text = L"Произведение";
 			this->buttonProd->UseVisualStyleBackColor = true;
+			this->buttonProd->Click += gcnew System::EventHandler(this, &MyForm::buttonProd_Click);
 			// 
 			// textBoxQuo
 			// 
@@ -532,6 +543,7 @@ namespace ComplexUI2
 			this->buttonQuo->TabIndex = 28;
 			this->buttonQuo->Text = L"Часное";
 			this->buttonQuo->UseVisualStyleBackColor = true;
+			this->buttonQuo->Click += gcnew System::EventHandler(this, &MyForm::buttonQuo_Click);
 			// 
 			// pictureBox1
 			// 
@@ -552,11 +564,30 @@ namespace ComplexUI2
 			this->buttonPrint->UseVisualStyleBackColor = true;
 			this->buttonPrint->Click += gcnew System::EventHandler(this, &MyForm::buttonPrint_Click);
 			// 
+			// textBoxIncb
+			// 
+			this->textBoxIncb->Location = System::Drawing::Point(292, 376);
+			this->textBoxIncb->Name = L"textBoxIncb";
+			this->textBoxIncb->Size = System::Drawing::Size(178, 20);
+			this->textBoxIncb->TabIndex = 32;
+			// 
+			// buttonEqb
+			// 
+			this->buttonEqb->Location = System::Drawing::Point(476, 519);
+			this->buttonEqb->Name = L"buttonEqb";
+			this->buttonEqb->Size = System::Drawing::Size(267, 23);
+			this->buttonEqb->TabIndex = 33;
+			this->buttonEqb->Text = L"Присвоение b к a";
+			this->buttonEqb->UseVisualStyleBackColor = true;
+			this->buttonEqb->Click += gcnew System::EventHandler(this, &MyForm::buttonEqb_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1186, 625);
+			this->Controls->Add(this->buttonEqb);
+			this->Controls->Add(this->textBoxIncb);
 			this->Controls->Add(this->buttonPrint);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->textBoxQuo);
@@ -566,12 +597,11 @@ namespace ComplexUI2
 			this->Controls->Add(this->textBoxDifr);
 			this->Controls->Add(this->buttonDifr);
 			this->Controls->Add(this->textBoxSum);
-			this->Controls->Add(this->textBoxEq);
 			this->Controls->Add(this->textBoxAbove);
 			this->Controls->Add(this->textBoxLess);
 			this->Controls->Add(this->textBoxComp);
 			this->Controls->Add(this->textBoxInc);
-			this->Controls->Add(this->buttonEq);
+			this->Controls->Add(this->buttonEqa);
 			this->Controls->Add(this->buttonComp);
 			this->Controls->Add(this->buttonAbove);
 			this->Controls->Add(this->buttonLess);
@@ -686,7 +716,7 @@ private: System::Void pictureBox1_Paint(System::Object^ sender, System::Windows:
  e->Graphics->DrawLine(System::Drawing::Pens::Green, m_p[1], m_p[2], m_p[3], m_p[4]);
 }
 
-private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^ e) 
+private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^ e)  // увеличение
 {
 	Complex* tmp = new Complex();
 	String^ s = textBoxInc->Text;
@@ -698,7 +728,17 @@ private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^
 	double i = Convert::ToDouble(token2);
 	tmp->setall(r, i);
 	*a += *tmp;
-}
+
+	s = textBoxIncb->Text;
+	if (textBoxIncb->Text->Length < 1)
+		return;
+	 token1 = s->Split('+')[0]; // 0- до +     1- после
+	 token2 = s->Split('*')[1];
+	 r = Convert::ToDouble(token1);
+	 i = Convert::ToDouble(token2);
+	tmp->setall(r, i);
+	*b += *tmp;
+} 
 private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	m_p[1] = 0;
@@ -706,6 +746,65 @@ private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArg
 	m_p[3] = Convert::ToInt32(a->getre());
 	m_p[4] = Convert::ToInt32(a->getim());
 	pictureBox1->Refresh();
+}
+private: System::Void buttonSum_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	Complex* tmp = new Complex();
+	tmp = *a + *b;
+	textBoxSum->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
+}
+private: System::Void buttonDifr_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	Complex* tmp = new Complex();
+	tmp = *a - *b;
+	textBoxDifr->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
+}
+private: System::Void buttonProd_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	Complex* tmp = new Complex();
+	tmp = *a * *b;
+	textBoxProd->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
+}
+private: System::Void buttonQuo_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	Complex* tmp = new Complex();
+	tmp = *a / *b;
+	textBoxQuo->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
+}
+private: System::Void buttonAbove_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (a > b)
+	{
+		textBoxAbove->Text = "True";
+		return;
+	}
+	textBoxAbove->Text = "False";
+}
+private: System::Void buttonLess_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (a < b)
+	{
+		textBoxLess->Text = "True";
+		return;
+	}
+	textBoxLess->Text = "False";
+}
+private: System::Void buttonComp_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (a == b)
+	{
+		textBoxComp->Text = "True";
+		return;
+	}
+	textBoxComp->Text = "False";
+}
+private: System::Void buttonEqa_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	b = a;
+}
+private: System::Void buttonEqb_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	a = b;
 }
 };
 }

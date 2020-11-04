@@ -26,10 +26,10 @@ public:
     void printim();
     void operator +=(Complex& k);
     void operator -=(Complex& k);
-    void operator +(Complex& k);
-    void operator -(Complex& k);
-    void operator *(Complex& k);
-    void operator /(Complex& k);
+    Complex* operator +(Complex& k);
+    Complex* operator -(Complex& k);
+    Complex* operator *(Complex& k);
+    Complex* operator /(Complex& k);
     bool operator >(Complex& k);
     bool operator <(Complex& k);
     bool operator ==(Complex& k);
