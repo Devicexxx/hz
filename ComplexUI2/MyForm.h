@@ -547,12 +547,16 @@ namespace ComplexUI2
 			// 
 			// pictureBox1
 			// 
+			this->pictureBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->pictureBox1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->pictureBox1->Location = System::Drawing::Point(937, 317);
+			this->pictureBox1->Location = System::Drawing::Point(933, 337);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(237, 222);
+			this->pictureBox1->Size = System::Drawing::Size(222, 222);
 			this->pictureBox1->TabIndex = 30;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBox1_Paint);
 			// 
 			// buttonPrint
 			// 
@@ -741,10 +745,10 @@ private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^
 } 
 private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	m_p[1] = 0;
-	m_p[2] = 0;
-	m_p[3] = Convert::ToInt32(a->getre());
-	m_p[4] = Convert::ToInt32(a->getim());
+	m_p[1] = 111;
+	m_p[2] = 111;
+	m_p[3] = (111 + Convert::ToInt32(a->getre())) *5;
+	m_p[4] = (111 - Convert::ToInt32(a->getim())) *5;
 	pictureBox1->Refresh();
 }
 private: System::Void buttonSum_Click(System::Object^ sender, System::EventArgs^ e) 
