@@ -13,7 +13,7 @@ namespace ComplexUI2
 	using namespace System::Drawing;
 	using namespace std;
 
-	int m_p[4];
+	int m_p[12];
 
 	/// <summary>
 	/// Сводка для MyForm
@@ -718,6 +718,8 @@ private: System::Void pictureBox1_Paint(System::Object^ sender, System::Windows:
 { 
 	// Рисуем линию
  e->Graphics->DrawLine(System::Drawing::Pens::Green, m_p[1], m_p[2], m_p[3], m_p[4]);
+ e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[5], m_p[6], m_p[7], m_p[8]);
+ e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[9], m_p[10], m_p[11], m_p[12]);
 }
 
 private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^ e)  // увеличение
@@ -749,6 +751,14 @@ private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArg
 	m_p[2] = 111;
 	m_p[3] = (111 + Convert::ToInt32(a->getre())) *5;
 	m_p[4] = (111 - Convert::ToInt32(a->getim())) *5;
+	m_p[5] = 111;
+	m_p[6] = 0;
+	m_p[7] = 111;
+	m_p[8] = 222;
+	m_p[9] = 0;
+	m_p[10] = 111;
+	m_p[11] = 222;
+	m_p[12] = 111;
 	pictureBox1->Refresh();
 }
 private: System::Void buttonSum_Click(System::Object^ sender, System::EventArgs^ e) 
