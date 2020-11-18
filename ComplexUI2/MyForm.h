@@ -13,9 +13,9 @@ namespace ComplexUI2
 	using namespace System::Drawing;
 	using namespace std;
 
-	int m_p[14];
+	int m_p[12];
 	Complex* mass[6];
-	unsigned int t;
+	unsigned int t, g;
 
 	/// <summary>
 	/// Сводка для MyForm
@@ -115,6 +115,8 @@ namespace ComplexUI2
 	private: System::Windows::Forms::TextBox^ textBoxIncb;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ textBoxCh;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::TextBox^ textBoxChB;
 		   /// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
@@ -132,6 +134,8 @@ namespace ComplexUI2
 			this->buttonAbs = (gcnew System::Windows::Forms::Button());
 			this->buttonPhase = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->textBoxCh = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBoxComb = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -164,8 +168,8 @@ namespace ComplexUI2
 			this->buttonPrint = (gcnew System::Windows::Forms::Button());
 			this->textBoxIncb = (gcnew System::Windows::Forms::TextBox());
 			this->buttonEqb = (gcnew System::Windows::Forms::Button());
-			this->textBoxCh = (gcnew System::Windows::Forms::TextBox());
-			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->textBoxChB = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -213,6 +217,8 @@ namespace ComplexUI2
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label5);
+			this->groupBox1->Controls->Add(this->textBoxChB);
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Controls->Add(this->textBoxCh);
 			this->groupBox1->Controls->Add(this->label3);
@@ -224,10 +230,26 @@ namespace ComplexUI2
 			this->groupBox1->Controls->Add(this->buttonEnter);
 			this->groupBox1->Location = System::Drawing::Point(6, 25);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(1102, 123);
+			this->groupBox1->Size = System::Drawing::Size(1119, 123);
 			this->groupBox1->TabIndex = 4;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Задать число";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(680, 25);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(83, 13);
+			this->label4->TabIndex = 8;
+			this->label4->Text = L"Номер числа A";
+			// 
+			// textBoxCh
+			// 
+			this->textBoxCh->Location = System::Drawing::Point(769, 22);
+			this->textBoxCh->Name = L"textBoxCh";
+			this->textBoxCh->Size = System::Drawing::Size(339, 20);
+			this->textBoxCh->TabIndex = 7;
 			// 
 			// label3
 			// 
@@ -504,21 +526,21 @@ namespace ComplexUI2
 			this->buttonEqb->UseVisualStyleBackColor = true;
 			this->buttonEqb->Click += gcnew System::EventHandler(this, &MyForm::buttonEqb_Click);
 			// 
-			// textBoxCh
+			// label5
 			// 
-			this->textBoxCh->Location = System::Drawing::Point(757, 22);
-			this->textBoxCh->Name = L"textBoxCh";
-			this->textBoxCh->Size = System::Drawing::Size(339, 20);
-			this->textBoxCh->TabIndex = 7;
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(680, 58);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(83, 13);
+			this->label5->TabIndex = 10;
+			this->label5->Text = L"Номер числа B";
 			// 
-			// label4
+			// textBoxChB
 			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(680, 25);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(73, 13);
-			this->label4->TabIndex = 8;
-			this->label4->Text = L"Номер числа";
+			this->textBoxChB->Location = System::Drawing::Point(769, 55);
+			this->textBoxChB->Name = L"textBoxChB";
+			this->textBoxChB->Size = System::Drawing::Size(339, 20);
+			this->textBoxChB->TabIndex = 9;
 			// 
 			// MyForm
 			// 
@@ -580,6 +602,8 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 	/*try
 	{*/
 	// a
+	if (textBoxCh->Text->Length < 1)
+		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	if ((textBoxReal->Text->Length != 0) && (textBoxImag->Text->Length != 0) && (textBoxComb->Text->Length < 1))
 	{
@@ -613,11 +637,17 @@ private: System::Void buttonShow_Click(System::Object^ sender, System::EventArgs
 }
 private: System::Void buttonAbs_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	textBoxMod->Text = a->abs();
+	if (textBoxCh->Text->Length < 1)
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	textBoxMod->Text = mass[t]->abs();
 }
 private: System::Void buttonPhase_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	textBoxPfase->Text = a->phase();
+	if (textBoxCh->Text->Length < 1)
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	textBoxPfase->Text = mass[t]->phase();
 }
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -633,38 +663,33 @@ private: System::Void pictureBox1_Paint(System::Object^ sender, System::Windows:
  e->Graphics->DrawLine(System::Drawing::Pens::Green, m_p[1], m_p[2], m_p[3], m_p[4]);
  e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[5], m_p[6], m_p[7], m_p[8]);
  e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[9], m_p[10], m_p[11], m_p[12]);
- e->Graphics->DrawLine(System::Drawing::Pens::Red, m_p[1], m_p[2], m_p[13], m_p[14]);
 }
 
-private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^ e)  // увеличение
-{
-	Complex* tmp = new Complex();
-	String^ s = textBoxInc->Text;
-	if (textBoxInc->Text->Length < 1)
-		return;
-	String^ token1 = s->Split('+')[0]; // 0- до +     1- после
-	String^ token2 = s->Split('*')[1];
-	double r = Convert::ToDouble(token1);
-	double i = Convert::ToDouble(token2);
-	tmp->setall(r, i);
-	*a += *tmp;
-
-	s = textBoxIncb->Text;
-	if (textBoxIncb->Text->Length < 1)
-		return;
-	 token1 = s->Split('+')[0]; // 0- до +     1- после
-	 token2 = s->Split('*')[1];
-	 r = Convert::ToDouble(token1);
-	 i = Convert::ToDouble(token2);
-	tmp->setall(r, i);
-	*b += *tmp;
-} 
+	private: System::Void buttonInc_Click(System::Object^ sender, System::EventArgs^ e)  // увеличение
+	{
+		if ((textBoxCh->Text->Length < 1) || (textBoxChB->Text->Length < 1))
+			return;
+		t = Convert::ToDouble(textBoxCh->Text);
+		Complex* tmp = new Complex();
+		String^ s = textBoxInc->Text;
+		if (textBoxInc->Text->Length < 1)
+			return;
+		String^ token1 = s->Split('+')[0]; // 0- до +     1- после
+		String^ token2 = s->Split('*')[1];
+		double r = Convert::ToDouble(token1);
+		double i = Convert::ToDouble(token2);
+		tmp->setall(r, i);
+		*mass[t] += *tmp;
+	}
 private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	if (textBoxCh->Text->Length < 1)
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
 	m_p[1] = 111;
 	m_p[2] = 111;
-	m_p[3] = (111 + Convert::ToInt32(a->getre())) *5;
-	m_p[4] = (111 - Convert::ToInt32(a->getim())) *5;
+	m_p[3] = (111 + Convert::ToInt32(mass[t]->getre())) *5;
+	m_p[4] = (111 - Convert::ToInt32(mass[t]->getim())) *5;
 	m_p[5] = 111;
 	m_p[6] = 0;
 	m_p[7] = 111;
@@ -673,37 +698,55 @@ private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArg
 	m_p[10] = 111;
 	m_p[11] = 222;
 	m_p[12] = 111;
-	m_p[13] = (111 + Convert::ToInt32(b->getre())) * 5;
-	m_p[14] = (111 - Convert::ToInt32(b->getim())) * 5;
 	pictureBox1->Refresh();
 }
 private: System::Void buttonSum_Click(System::Object^ sender, System::EventArgs^ e) 
 {
+	if ((textBoxCh->Text->Length < 1) || (textBoxChB->Text->Length < 1))
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	g = Convert::ToDouble(textBoxChB->Text);
 	Complex* tmp = new Complex();
-	tmp = *a + *b;
+	tmp = *mass[t] + *mass[g];
 	textBoxSum->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
 }
 private: System::Void buttonDifr_Click(System::Object^ sender, System::EventArgs^ e) 
 {
+	if ((textBoxCh->Text->Length < 1) || (textBoxChB->Text->Length < 1))
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	g = Convert::ToDouble(textBoxChB->Text);
 	Complex* tmp = new Complex();
-	tmp = *a - *b;
+	tmp = *mass[t] - *mass[g];
 	textBoxDifr->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
 }
 private: System::Void buttonProd_Click(System::Object^ sender, System::EventArgs^ e) 
 {
+	if ((textBoxCh->Text->Length < 1) || (textBoxChB->Text->Length < 1))
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	g = Convert::ToDouble(textBoxChB->Text);
 	Complex* tmp = new Complex();
-	tmp = *a * *b;
+	tmp = *mass[t] * *mass[g];
 	textBoxProd->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
 }
 private: System::Void buttonQuo_Click(System::Object^ sender, System::EventArgs^ e) 
 {
+	if ((textBoxCh->Text->Length < 1) || (textBoxChB->Text->Length < 1))
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	g = Convert::ToDouble(textBoxChB->Text);
 	Complex* tmp = new Complex();
-	tmp = *a / *b;
+	tmp = *mass[t] / *mass[g];
 	textBoxQuo->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
 }
 private: System::Void buttonAbove_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	if (a > b)
+	if ((textBoxCh->Text->Length < 1) || (textBoxChB->Text->Length < 1))
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	g = Convert::ToDouble(textBoxChB->Text);
+	if (mass[t] > mass[g])
 	{
 		textBoxAbove->Text = "True";
 		return;
@@ -712,7 +755,11 @@ private: System::Void buttonAbove_Click(System::Object^ sender, System::EventArg
 }
 private: System::Void buttonLess_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	if (a < b)
+	if ((textBoxCh->Text->Length < 1) || (textBoxChB->Text->Length < 1))
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	g = Convert::ToDouble(textBoxChB->Text);
+	if (mass[t] < mass[g])
 	{
 		textBoxLess->Text = "True";
 		return;
@@ -721,7 +768,11 @@ private: System::Void buttonLess_Click(System::Object^ sender, System::EventArgs
 }
 private: System::Void buttonComp_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	if (a == b)
+	if ((textBoxCh->Text->Length < 1) || (textBoxChB->Text->Length < 1))
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	g = Convert::ToDouble(textBoxChB->Text);
+	if (mass[t] == mass[g])
 	{
 		textBoxComp->Text = "True";
 		return;
@@ -730,11 +781,15 @@ private: System::Void buttonComp_Click(System::Object^ sender, System::EventArgs
 }
 private: System::Void buttonEqa_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	b = a;
+	if ((textBoxCh->Text->Length < 1) || (textBoxChB->Text->Length < 1))
+		return;
+	t = Convert::ToDouble(textBoxCh->Text);
+	g = Convert::ToDouble(textBoxChB->Text);
+	mass[t] = mass[g];
 }
 private: System::Void buttonEqb_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	a = b;
+	mass[t] = mass[g];
 }
 };
 }
