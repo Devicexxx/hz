@@ -16,6 +16,7 @@ namespace ComplexUI2
 	int m_p[12];
 	Complex* mass[6];
 	unsigned int t, g;
+	String^* str[6];
 
 	/// <summary>
 	/// Сводка для MyForm
@@ -134,6 +135,8 @@ namespace ComplexUI2
 			this->buttonAbs = (gcnew System::Windows::Forms::Button());
 			this->buttonPhase = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->textBoxChB = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBoxCh = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -168,8 +171,6 @@ namespace ComplexUI2
 			this->buttonPrint = (gcnew System::Windows::Forms::Button());
 			this->textBoxIncb = (gcnew System::Windows::Forms::TextBox());
 			this->buttonEqb = (gcnew System::Windows::Forms::Button());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->textBoxChB = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -235,6 +236,22 @@ namespace ComplexUI2
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Задать число";
 			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(680, 58);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(83, 13);
+			this->label5->TabIndex = 10;
+			this->label5->Text = L"Номер числа B";
+			// 
+			// textBoxChB
+			// 
+			this->textBoxChB->Location = System::Drawing::Point(769, 55);
+			this->textBoxChB->Name = L"textBoxChB";
+			this->textBoxChB->Size = System::Drawing::Size(339, 20);
+			this->textBoxChB->TabIndex = 9;
+			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
@@ -262,7 +279,7 @@ namespace ComplexUI2
 			// 
 			// textBoxComb
 			// 
-			this->textBoxComb->Location = System::Drawing::Point(335, 89);
+			this->textBoxComb->Location = System::Drawing::Point(335, 92);
 			this->textBoxComb->Name = L"textBoxComb";
 			this->textBoxComb->Size = System::Drawing::Size(339, 20);
 			this->textBoxComb->TabIndex = 5;
@@ -526,22 +543,6 @@ namespace ComplexUI2
 			this->buttonEqb->UseVisualStyleBackColor = true;
 			this->buttonEqb->Click += gcnew System::EventHandler(this, &MyForm::buttonEqb_Click);
 			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(680, 58);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(83, 13);
-			this->label5->TabIndex = 10;
-			this->label5->Text = L"Номер числа B";
-			// 
-			// textBoxChB
-			// 
-			this->textBoxChB->Location = System::Drawing::Point(769, 55);
-			this->textBoxChB->Name = L"textBoxChB";
-			this->textBoxChB->Size = System::Drawing::Size(339, 20);
-			this->textBoxChB->TabIndex = 9;
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -746,7 +747,7 @@ private: System::Void buttonAbove_Click(System::Object^ sender, System::EventArg
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
-	if (mass[t] > mass[g])
+	if (*mass[t] > *mass[g])
 	{
 		textBoxAbove->Text = "True";
 		return;
@@ -759,7 +760,7 @@ private: System::Void buttonLess_Click(System::Object^ sender, System::EventArgs
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
-	if (mass[t] < mass[g])
+	if (*mass[t] < *mass[g])
 	{
 		textBoxLess->Text = "True";
 		return;
@@ -772,7 +773,7 @@ private: System::Void buttonComp_Click(System::Object^ sender, System::EventArgs
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
-	if (mass[t] == mass[g])
+	if (*mass[t] == *mass[g])
 	{
 		textBoxComp->Text = "True";
 		return;

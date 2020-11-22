@@ -29,9 +29,36 @@ public:
     Complex* operator +(Complex& k);
     Complex* operator -(Complex& k);
     Complex* operator *(Complex& k);
-    Complex* operator /(Complex& k);
+    Complex* operator /(Complex& k); 
     bool operator >(Complex& k);
     bool operator <(Complex& k);
     bool operator ==(Complex& k);
     void operator =(Complex& k);
+
+    friend class ComplexArr;
+};
+
+public class ComplexArr
+{
+private:
+    Complex* arr;
+    unsigned int Len;
+public:
+    ComplexArr() { Len = 0; arr = 0; }
+    ComplexArr(unsigned int l)
+    {
+        Len = l;
+        arr = new Complex[l];
+    }
+    ~ComplexArr() {};
+
+    void setSize(unsigned int i);
+
+
+    Complex  operator [] (unsigned int i);
+    unsigned int getSize();
+    //Complex operator [] (String^ s);
+    void  operator = (ComplexArr& k);
+
+    friend class Complex;
 };

@@ -176,3 +176,57 @@ void Complex:: operator =(Complex& k)
     this->setre(Convert::ToDouble(k.getre()));
     this->setim(Convert::ToDouble(k.getim()));
 }
+
+
+ //класс ComplexArr
+Complex ComplexArr:: operator [](unsigned int i)
+{
+    if (i < Len)
+        return arr[i];
+    return arr[0];
+}
+ComplexArr::ComplexArr(const ComplexArr& TArr) // Конструкор копий
+{
+    Len = TArr.Len; // Устанавливаем размер
+    arr = new Complex[Len]; // Выделяем память
+    for (unsigned int i = 0; i < Len; i++)
+        arr[i] = TArr.arr[i]; // Копируем элементы
+}
+//Complex ComplexArr:: operator [](String^ s)
+//{
+//    unsigned i;
+//    if (s->Length != 0)
+//        return arr[i];
+//    return arr[0];
+//}
+void ComplexArr::setSize(unsigned int i)
+{
+    Complex* tmp;
+    tmp = new Complex();
+        if (arr) // Если память выделялась ранее,
+        {
+            for (unsigned int k = 0; k < i && k < Len; k++)
+                tmp[k] = arr[k]; // Копируем элементы
+            delete[]arr; // освобождаем память
+        }
+        Len = i; // Устанавливаем новый размер
+        arr = new Complex[Len]; // и выделяем память
+}
+unsigned int ComplexArr::getSize()
+{
+    return Len;
+}
+void ComplexArr:: operator =(ComplexArr& k)
+{
+    int q;
+    if (this->getSize() > k.getSize())
+        q = k.getSize();
+    else
+        q = this->getSize();
+    ComplexArr* t = new ComplexArr(Len);
+    t = this;
+    for (unsigned int i = 0; i < q; i++)
+    {
+       this[i] = k[i];
+    }
+}
