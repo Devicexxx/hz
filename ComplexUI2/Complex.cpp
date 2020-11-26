@@ -192,13 +192,13 @@ ComplexArr::ComplexArr(const ComplexArr& TArr) // Конструкор копий
     for (unsigned int i = 0; i < Len; i++)
         arr[i] = TArr.arr[i]; // Копируем элементы
 }
-//Complex ComplexArr:: operator [](String^ s)
-//{
-//    unsigned i;
-//    if (s->Length != 0)
-//        return arr[i];
-//    return arr[0];
-//}
+Complex ComplexArr:: operator [](String^ s)
+{
+    unsigned i;
+    if (s->Length != 0)
+        return arr[i];
+    return arr[0];
+}
 void ComplexArr::setSize(unsigned int i)
 {
     Complex* tmp;
@@ -227,6 +227,6 @@ void ComplexArr:: operator =(ComplexArr& k)
     t = this;
     for (unsigned int i = 0; i < q; i++)
     {
-       this[i] = k[i];
+       t[i] = k[i];
     }
 }
