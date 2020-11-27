@@ -8,17 +8,20 @@ public class Complex
 private:
     double re, im, k;
     double  i, j;
+    System::String^* id;
 public:
-    Complex() { re = 0; im = 0; }
+    Complex() { re = 0; im = 0; id = 0; }
+    Complex(double i, double j, String^* s) { re = i; im = j; id = s; }
     Complex(double i, double j) { re = i; im = j; }
-    Complex(double i) { re = i; }
+    Complex(String^* s) { id = s; }
     ~Complex() {};
-
     void setre(double i);
     void setim(double i);
     void setall(double i, double j);
+    void setid(String^* s);
     String^ getre();
     String^ getim();
+    String^ getid();
     String^ abs();
     String^ phase();
     void print();
@@ -51,7 +54,7 @@ public:
         arr = new Complex[l];
     }
     ~ComplexArr() {};
-
+    ComplexArr(const ComplexArr& TArr);// Конструкор копий
     void setSize(unsigned int i);
 
 

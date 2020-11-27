@@ -21,6 +21,10 @@ void Complex::setall(double i, double j)
     re = i;
     im = j;
 }
+void Complex::setid(String^* s)
+{
+    id = s;
+}
 String^ Complex::getre()
 {
     return Convert::ToString(re);
@@ -28,6 +32,10 @@ String^ Complex::getre()
 String^ Complex::getim()
 {
     return Convert::ToString(im);
+}
+String^ Complex::getid()
+{
+    return Convert::ToString(id);
 }
 String^ Complex::abs()
 {
