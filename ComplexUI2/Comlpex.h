@@ -56,7 +56,7 @@ public:
     ~ComplexArr() {};
     ComplexArr(const ComplexArr& TArr);// Конструкор копий
     void setSize(unsigned int i);
-
+    void Clear(ComplexArr& k);
 
     Complex  operator [] (unsigned int i);
     unsigned int getSize();

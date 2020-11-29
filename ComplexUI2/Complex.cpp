@@ -224,17 +224,24 @@ unsigned int ComplexArr::getSize()
 {
     return Len;
 }
+void ComplexArr::Clear(ComplexArr& k)
+{
+    unsigned int q = k.getSize();
+    for (unsigned int i = 0; i < q; i++)
+    {
+        k[i].setim(0);
+        k[i].setre(0);
+    }
+}
 void ComplexArr:: operator =(ComplexArr& k)
 {
-    int q;
+    unsigned int q;
     if (this->getSize() > k.getSize())
         q = k.getSize();
     else
         q = this->getSize();
-    ComplexArr* t = new ComplexArr(Len);
-    t = this;
     for (unsigned int i = 0; i < q; i++)
     {
-       t[i] = k[i];
+      (*this)[i] = k[i];
     }
 }

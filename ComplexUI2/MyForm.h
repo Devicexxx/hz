@@ -14,10 +14,10 @@ namespace ComplexUI2
 	using namespace std;
 
 	int m_p[12];
-	Complex* mass[6];
-	unsigned int t, g;
+	ComplexArr* a;
+	ComplexArr* b;
+	unsigned int t, g, p, o;
 	String^* str[6];
-
 	/// <summary>
 	/// Сводка для MyForm
 	/// </summary>
@@ -32,10 +32,8 @@ namespace ComplexUI2
 			//
 			//TODO: добавьте код конструктора
 			//
-			for ( i = 1; i < 7; i++)
-			{
-				mass[i] = new Complex();
-			}
+			a = new ComplexArr();
+			b = new ComplexArr();
 		}
 
 	protected:
@@ -118,6 +116,10 @@ namespace ComplexUI2
 	private: System::Windows::Forms::TextBox^ textBoxCh;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBoxChB;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::TextBox^ textBoxMasB;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::TextBox^ textBoxMas;
 		   /// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
@@ -171,6 +173,10 @@ namespace ComplexUI2
 			this->buttonPrint = (gcnew System::Windows::Forms::Button());
 			this->textBoxIncb = (gcnew System::Windows::Forms::TextBox());
 			this->buttonEqb = (gcnew System::Windows::Forms::Button());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->textBoxMasB = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->textBoxMas = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -218,6 +224,10 @@ namespace ComplexUI2
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label6);
+			this->groupBox1->Controls->Add(this->textBoxMasB);
+			this->groupBox1->Controls->Add(this->label7);
+			this->groupBox1->Controls->Add(this->textBoxMas);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->textBoxChB);
 			this->groupBox1->Controls->Add(this->label4);
@@ -231,7 +241,7 @@ namespace ComplexUI2
 			this->groupBox1->Controls->Add(this->buttonEnter);
 			this->groupBox1->Location = System::Drawing::Point(6, 25);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(1119, 123);
+			this->groupBox1->Size = System::Drawing::Size(1168, 123);
 			this->groupBox1->TabIndex = 4;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Задать число";
@@ -249,7 +259,7 @@ namespace ComplexUI2
 			// 
 			this->textBoxChB->Location = System::Drawing::Point(769, 55);
 			this->textBoxChB->Name = L"textBoxChB";
-			this->textBoxChB->Size = System::Drawing::Size(339, 20);
+			this->textBoxChB->Size = System::Drawing::Size(146, 20);
 			this->textBoxChB->TabIndex = 9;
 			// 
 			// label4
@@ -265,7 +275,7 @@ namespace ComplexUI2
 			// 
 			this->textBoxCh->Location = System::Drawing::Point(769, 22);
 			this->textBoxCh->Name = L"textBoxCh";
-			this->textBoxCh->Size = System::Drawing::Size(339, 20);
+			this->textBoxCh->Size = System::Drawing::Size(146, 20);
 			this->textBoxCh->TabIndex = 7;
 			// 
 			// label3
@@ -543,6 +553,38 @@ namespace ComplexUI2
 			this->buttonEqb->UseVisualStyleBackColor = true;
 			this->buttonEqb->Click += gcnew System::EventHandler(this, &MyForm::buttonEqb_Click);
 			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(924, 58);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(88, 13);
+			this->label6->TabIndex = 14;
+			this->label6->Text = L"Массив числа B";
+			// 
+			// textBoxMasB
+			// 
+			this->textBoxMasB->Location = System::Drawing::Point(1013, 55);
+			this->textBoxMasB->Name = L"textBoxMasB";
+			this->textBoxMasB->Size = System::Drawing::Size(146, 20);
+			this->textBoxMasB->TabIndex = 13;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(924, 25);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(88, 13);
+			this->label7->TabIndex = 12;
+			this->label7->Text = L"Массив числа A";
+			// 
+			// textBoxMas
+			// 
+			this->textBoxMas->Location = System::Drawing::Point(1013, 22);
+			this->textBoxMas->Name = L"textBoxMas";
+			this->textBoxMas->Size = System::Drawing::Size(146, 20);
+			this->textBoxMas->TabIndex = 11;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -600,17 +642,27 @@ private: System::Void OutToolStripMenuItem_Click(System::Object^ sender, System:
 }
 private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	/*try
-	{*/
-	// a
 	if (textBoxCh->Text->Length < 1)
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
+	p = Convert::ToDouble(textBoxMas->Text);
 	if ((textBoxReal->Text->Length != 0) && (textBoxImag->Text->Length != 0) && (textBoxComb->Text->Length < 1))
 	{
-		double rr = Convert::ToDouble(textBoxReal->Text);
-		double ii = Convert::ToDouble(textBoxImag->Text);
-		mass[t]->setall(rr, ii);
+		switch (p)
+		{
+		case 1:
+		{
+			double rr = Convert::ToDouble(textBoxReal->Text);
+			double ii = Convert::ToDouble(textBoxImag->Text);
+			(*a)[t].setall(rr, ii);
+		}
+		case 2:
+		{
+			double rr = Convert::ToDouble(textBoxReal->Text);
+			double ii = Convert::ToDouble(textBoxImag->Text);
+			(*b)[t].setall(rr, ii);
+		}
+		}
 	}
 	else
 	{
@@ -622,7 +674,19 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		String^ token2 = s->Split('*')[1];
 		double r = Convert::ToDouble(token1);
 		double i = Convert::ToDouble(token2);
-		mass[t]->setall(r, i);
+		switch (p)
+		{
+		case 1:
+		{
+
+			(*a)[t].setall(r, i);
+		}
+		case 2:
+		{
+
+			(*b)[t].setall(r, i);
+		}
+		}
 	}
 	
 		// длинна всей строки - ->Lenght
@@ -634,21 +698,54 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 }
 private: System::Void buttonShow_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	textBoxShow->Text = mass[t = Convert::ToDouble(textBoxCh->Text) ]->getre() + "+" + "i" + "*" + mass[t = Convert::ToDouble(textBoxCh->Text)]->getim();
+	p = Convert::ToDouble(textBoxMas->Text);
+	switch (p)
+	{
+	case 1:
+	{
+		textBoxShow->Text = (*a)[t = Convert::ToDouble(textBoxCh->Text)].getre() + "+" + "i" + "*" + (*a)[t = Convert::ToDouble(textBoxCh->Text)].getim();
+	}
+	case 2:
+	{
+		textBoxShow->Text = (*b)[t = Convert::ToDouble(textBoxCh->Text)].getre() + "+" + "i" + "*" + (*a)[t = Convert::ToDouble(textBoxCh->Text)].getim();
+	}
+	}
 }
 private: System::Void buttonAbs_Click(System::Object^ sender, System::EventArgs^ e) 
 {
 	if (textBoxCh->Text->Length < 1)
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
-	textBoxMod->Text = mass[t]->abs();
+	p = Convert::ToDouble(textBoxMas->Text);
+	switch (p)
+	{
+	case 1:
+	{
+		textBoxMod->Text = (*a)[t].abs();
+	}
+	case 2:
+	{
+		textBoxMod->Text = (*b)[t].abs();
+	}
+	}
 }
 private: System::Void buttonPhase_Click(System::Object^ sender, System::EventArgs^ e) 
 {
 	if (textBoxCh->Text->Length < 1)
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
-	textBoxPfase->Text = mass[t]->phase();
+	p = Convert::ToDouble(textBoxMas->Text);
+	switch (p)
+	{
+	case 1:
+	{
+		textBoxPfase->Text = (*a)[t].phase();
+	}
+	case 2:
+	{
+		textBoxPfase->Text = (*b)[t].phase();
+	}
+	}
 }
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -680,17 +777,41 @@ private: System::Void pictureBox1_Paint(System::Object^ sender, System::Windows:
 		double r = Convert::ToDouble(token1);
 		double i = Convert::ToDouble(token2);
 		tmp->setall(r, i);
-		*mass[t] += *tmp;
+		p = Convert::ToDouble(textBoxMas->Text);
+		switch (p)
+		{
+		case 1:
+		{
+			(*a)[t] += *tmp;
+		}
+		case 2:
+		{
+			(*b)[t] += *tmp;
+		}
+		}
 	}
 private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	if (textBoxCh->Text->Length < 1)
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
+	p = Convert::ToDouble(textBoxMas->Text);
+	switch (p)
+	{
+	case 1:
+	{
+		m_p[3] = (111 + Convert::ToInt32((*a)[t].getre())) * 5;
+		m_p[4] = (111 - Convert::ToInt32((*a)[t].getim())) * 5;
+	}
+	case 2:
+	{
+		m_p[3] = (111 + Convert::ToInt32((*b)[t].getre())) * 5;
+		m_p[4] = (111 - Convert::ToInt32((*b)[t].getim())) * 5;
+	}
+	}
 	m_p[1] = 111;
 	m_p[2] = 111;
-	m_p[3] = (111 + Convert::ToInt32(mass[t]->getre())) *5;
-	m_p[4] = (111 - Convert::ToInt32(mass[t]->getim())) *5;
+	
 	m_p[5] = 111;
 	m_p[6] = 0;
 	m_p[7] = 111;
@@ -708,7 +829,26 @@ private: System::Void buttonSum_Click(System::Object^ sender, System::EventArgs^
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
 	Complex* tmp = new Complex();
-	tmp = *mass[t] + *mass[g];
+	p = Convert::ToDouble(textBoxMas->Text);
+	o = Convert::ToDouble(textBoxMasB->Text);
+	if (p == o == 1)
+	{
+		tmp = (*a)[t] + (*a)[g];
+	}
+	else
+		if (p == o == 2)
+		{
+			tmp = (*b)[t] + (*b)[g];
+		}
+		else
+			if (p > o)
+			{
+				tmp = (*a)[t] + (*b)[g];
+			}
+			else
+			{
+				tmp = (*b)[t] + (*a)[g];
+			}
 	textBoxSum->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
 }
 private: System::Void buttonDifr_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -718,7 +858,26 @@ private: System::Void buttonDifr_Click(System::Object^ sender, System::EventArgs
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
 	Complex* tmp = new Complex();
-	tmp = *mass[t] - *mass[g];
+	p = Convert::ToDouble(textBoxMas->Text);
+	o = Convert::ToDouble(textBoxMasB->Text);
+	if (p == o == 1)
+	{
+		tmp = (*a)[t] - (*a)[g];
+	}
+	else
+		if (p == o == 2)
+		{
+			tmp = (*b)[t] - (*b)[g];
+		}
+		else
+			if (p > o)
+			{
+				tmp = (*a)[t] - (*b)[g];
+			}
+			else
+			{
+				tmp = (*b)[t] - (*a)[g];
+			}
 	textBoxDifr->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
 }
 private: System::Void buttonProd_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -728,7 +887,26 @@ private: System::Void buttonProd_Click(System::Object^ sender, System::EventArgs
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
 	Complex* tmp = new Complex();
-	tmp = *mass[t] * *mass[g];
+	p = Convert::ToDouble(textBoxMas->Text);
+	o = Convert::ToDouble(textBoxMasB->Text);
+	if (p == o == 1)
+	{
+		tmp = (*a)[t] * (*a)[g];
+	}
+	else
+		if (p == o == 2)
+		{
+			tmp = (*b)[t] * (*b)[g];
+		}
+		else
+			if (p > o)
+			{
+				tmp = (*a)[t] * (*b)[g];
+			}
+			else
+			{
+				tmp = (*b)[t] * (*a)[g];
+			}
 	textBoxProd->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
 }
 private: System::Void buttonQuo_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -738,7 +916,26 @@ private: System::Void buttonQuo_Click(System::Object^ sender, System::EventArgs^
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
 	Complex* tmp = new Complex();
-	tmp = *mass[t] / *mass[g];
+	p = Convert::ToDouble(textBoxMas->Text);
+	o = Convert::ToDouble(textBoxMasB->Text);
+	if (p == o == 1)
+	{
+		tmp = (*a)[t] / (*a)[g];
+	}
+	else
+		if (p == o == 2)
+		{
+			tmp = (*b)[t] / (*b)[g];
+		}
+		else
+			if (p > o)
+			{
+				tmp = (*a)[t] / (*b)[g];
+			}
+			else
+			{
+				tmp = (*b)[t] / (*a)[g];
+			}
 	textBoxQuo->Text = tmp->getre() + "+" + "i" + "*" + tmp->getim();
 }
 private: System::Void buttonAbove_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -747,12 +944,46 @@ private: System::Void buttonAbove_Click(System::Object^ sender, System::EventArg
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
-	if (*mass[t] > *mass[g])
+	p = Convert::ToDouble(textBoxMas->Text);
+	o = Convert::ToDouble(textBoxMasB->Text);
+	if (p == o == 1)
 	{
-		textBoxAbove->Text = "True";
-		return;
+		if ((*a)[t] > (*a)[g])
+		{
+			textBoxAbove->Text = "True";
+			return;
+		}
+		textBoxAbove->Text = "False";
 	}
-	textBoxAbove->Text = "False";
+	else
+		if (p == o == 2)
+		{
+			if ((*b)[t] > (*b)[g])
+			{
+				textBoxAbove->Text = "True";
+				return;
+			}
+			textBoxAbove->Text = "False";
+		}
+		else
+			if (p > o)
+			{
+				if ((*a)[t] > (*b)[g])
+				{
+					textBoxAbove->Text = "True";
+					return;
+				}
+				textBoxAbove->Text = "False";
+			}
+			else
+			{
+				if ((*b)[t] > (*a)[g])
+				{
+					textBoxAbove->Text = "True";
+					return;
+				}
+				textBoxAbove->Text = "False";
+			}
 }
 private: System::Void buttonLess_Click(System::Object^ sender, System::EventArgs^ e) 
 {
@@ -760,12 +991,46 @@ private: System::Void buttonLess_Click(System::Object^ sender, System::EventArgs
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
-	if (*mass[t] < *mass[g])
+	p = Convert::ToDouble(textBoxMas->Text);
+	o = Convert::ToDouble(textBoxMasB->Text);
+	if (p == o == 1)
 	{
-		textBoxLess->Text = "True";
-		return;
+		if ((*a)[t] < (*a)[g])
+		{
+			textBoxAbove->Text = "True";
+			return;
+		}
+		textBoxAbove->Text = "False";
 	}
-	textBoxLess->Text = "False";
+	else
+		if (p == o == 2)
+		{
+			if ((*b)[t] < (*b)[g])
+			{
+				textBoxAbove->Text = "True";
+				return;
+			}
+			textBoxAbove->Text = "False";
+		}
+		else
+			if (p > o)
+			{
+				if ((*a)[t] < (*b)[g])
+				{
+					textBoxAbove->Text = "True";
+					return;
+				}
+				textBoxAbove->Text = "False";
+			}
+			else
+			{
+				if ((*b)[t] < (*a)[g])
+				{
+					textBoxAbove->Text = "True";
+					return;
+				}
+				textBoxAbove->Text = "False";
+			}
 }
 private: System::Void buttonComp_Click(System::Object^ sender, System::EventArgs^ e) 
 {
@@ -773,12 +1038,46 @@ private: System::Void buttonComp_Click(System::Object^ sender, System::EventArgs
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
-	if (*mass[t] == *mass[g])
+	p = Convert::ToDouble(textBoxMas->Text);
+	o = Convert::ToDouble(textBoxMasB->Text);
+	if (p == o == 1)
 	{
-		textBoxComp->Text = "True";
-		return;
+		if ((*a)[t] == (*a)[g])
+		{
+			textBoxAbove->Text = "True";
+			return;
+		}
+		textBoxAbove->Text = "False";
 	}
-	textBoxComp->Text = "False";
+	else
+		if (p == o == 2)
+		{
+			if ((*b)[t] == (*b)[g])
+			{
+				textBoxAbove->Text = "True";
+				return;
+			}
+			textBoxAbove->Text = "False";
+		}
+		else
+			if (p > o)
+			{
+				if ((*a)[t] == (*b)[g])
+				{
+					textBoxAbove->Text = "True";
+					return;
+				}
+				textBoxAbove->Text = "False";
+			}
+			else
+			{
+				if ((*b)[t] == (*a)[g])
+				{
+					textBoxAbove->Text = "True";
+					return;
+				}
+				textBoxAbove->Text = "False";
+			}
 }
 private: System::Void buttonEqa_Click(System::Object^ sender, System::EventArgs^ e) 
 {
@@ -786,11 +1085,31 @@ private: System::Void buttonEqa_Click(System::Object^ sender, System::EventArgs^
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	g = Convert::ToDouble(textBoxChB->Text);
-	mass[t] = mass[g];
+	p = Convert::ToDouble(textBoxMas->Text);
+	o = Convert::ToDouble(textBoxMasB->Text);
+	if (p == o == 1)
+	{
+		(*a)[t] = (*a)[g];
+	}
+	else
+		if (p == o == 2)
+		{
+			(*b)[t] = (*b)[g];
+		}
+		else
+			if (p > o)
+			{
+				(*a)[t] = (*b)[g];
+			}
+			else
+			{
+				(*b)[t] = (*a)[g];
+			}
+	
 }
 private: System::Void buttonEqb_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	mass[t] = mass[g];
+	//mass[t] = mass[g];
 }
 };
 }
