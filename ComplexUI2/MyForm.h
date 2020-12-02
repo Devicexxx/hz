@@ -120,10 +120,14 @@ namespace ComplexUI2
 	private: System::Windows::Forms::TextBox^ textBoxMasB;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::TextBox^ textBoxMas;
+	private: System::Windows::Forms::ImageList^ imageList1;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ textBoxId;
+	private: System::ComponentModel::IContainer^ components;
 		   /// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -132,11 +136,16 @@ namespace ComplexUI2
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->buttonEnter = (gcnew System::Windows::Forms::Button());
 			this->buttonShow = (gcnew System::Windows::Forms::Button());
 			this->buttonAbs = (gcnew System::Windows::Forms::Button());
 			this->buttonPhase = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->textBoxMasB = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->textBoxMas = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBoxChB = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -173,10 +182,9 @@ namespace ComplexUI2
 			this->buttonPrint = (gcnew System::Windows::Forms::Button());
 			this->textBoxIncb = (gcnew System::Windows::Forms::TextBox());
 			this->buttonEqb = (gcnew System::Windows::Forms::Button());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBoxMasB = (gcnew System::Windows::Forms::TextBox());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->textBoxMas = (gcnew System::Windows::Forms::TextBox());
+			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->textBoxId = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -224,6 +232,8 @@ namespace ComplexUI2
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label8);
+			this->groupBox1->Controls->Add(this->textBoxId);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->textBoxMasB);
 			this->groupBox1->Controls->Add(this->label7);
@@ -245,6 +255,38 @@ namespace ComplexUI2
 			this->groupBox1->TabIndex = 4;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Задать число";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(924, 58);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(88, 13);
+			this->label6->TabIndex = 14;
+			this->label6->Text = L"Массив числа B";
+			// 
+			// textBoxMasB
+			// 
+			this->textBoxMasB->Location = System::Drawing::Point(1013, 55);
+			this->textBoxMasB->Name = L"textBoxMasB";
+			this->textBoxMasB->Size = System::Drawing::Size(146, 20);
+			this->textBoxMasB->TabIndex = 13;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(924, 25);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(88, 13);
+			this->label7->TabIndex = 12;
+			this->label7->Text = L"Массив числа A";
+			// 
+			// textBoxMas
+			// 
+			this->textBoxMas->Location = System::Drawing::Point(1013, 22);
+			this->textBoxMas->Name = L"textBoxMas";
+			this->textBoxMas->Size = System::Drawing::Size(146, 20);
+			this->textBoxMas->TabIndex = 11;
 			// 
 			// label5
 			// 
@@ -553,37 +595,27 @@ namespace ComplexUI2
 			this->buttonEqb->UseVisualStyleBackColor = true;
 			this->buttonEqb->Click += gcnew System::EventHandler(this, &MyForm::buttonEqb_Click);
 			// 
-			// label6
+			// imageList1
 			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(924, 58);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(88, 13);
-			this->label6->TabIndex = 14;
-			this->label6->Text = L"Массив числа B";
+			this->imageList1->ColorDepth = System::Windows::Forms::ColorDepth::Depth16Bit;
+			this->imageList1->ImageSize = System::Drawing::Size(16, 16);
+			this->imageList1->TransparentColor = System::Drawing::Color::Transparent;
 			// 
-			// textBoxMasB
+			// label8
 			// 
-			this->textBoxMasB->Location = System::Drawing::Point(1013, 55);
-			this->textBoxMasB->Name = L"textBoxMasB";
-			this->textBoxMasB->Size = System::Drawing::Size(146, 20);
-			this->textBoxMasB->TabIndex = 13;
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(748, 96);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(15, 13);
+			this->label8->TabIndex = 16;
+			this->label8->Text = L"id";
 			// 
-			// label7
+			// textBoxId
 			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(924, 25);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(88, 13);
-			this->label7->TabIndex = 12;
-			this->label7->Text = L"Массив числа A";
-			// 
-			// textBoxMas
-			// 
-			this->textBoxMas->Location = System::Drawing::Point(1013, 22);
-			this->textBoxMas->Name = L"textBoxMas";
-			this->textBoxMas->Size = System::Drawing::Size(146, 20);
-			this->textBoxMas->TabIndex = 11;
+			this->textBoxId->Location = System::Drawing::Point(769, 92);
+			this->textBoxId->Name = L"textBoxId";
+			this->textBoxId->Size = System::Drawing::Size(146, 20);
+			this->textBoxId->TabIndex = 15;
 			// 
 			// MyForm
 			// 
@@ -654,7 +686,9 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		{
 			double rr = Convert::ToDouble(textBoxReal->Text);
 			double ii = Convert::ToDouble(textBoxImag->Text);
+			System::String^* s = textBoxId->Text;
 			(*a)[t].setall(rr, ii);
+			(*a)[t].setid(s);
 		}
 		case 2:
 		{

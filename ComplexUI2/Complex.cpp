@@ -200,11 +200,18 @@ ComplexArr::ComplexArr(const ComplexArr& TArr) // Конструкор копий
     for (unsigned int i = 0; i < Len; i++)
         arr[i] = TArr.arr[i]; // Копируем элементы
 }
-Complex ComplexArr:: operator [](String^ s)
+Complex ComplexArr:: operator [](System::String^ s)
 {
-    unsigned i;
-    if (s->Length != 0)
-        return arr[i];
+    int t;
+    for (int i = 1; i < Len; i++)
+    {
+        if (arr[i].getid() == s)
+        {
+            t = i;
+        }
+    }
+    if (s->Length != 0 && t < Len)
+        return arr[t];
     return arr[0];
 }
 void ComplexArr::setSize(unsigned int i)

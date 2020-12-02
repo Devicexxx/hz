@@ -60,7 +60,7 @@ public:
 
     Complex  operator [] (unsigned int i);
     unsigned int getSize();
-    Complex operator [] (String^ s);
+    Complex operator [] (System::String^ s);
     void  operator = (ComplexArr& k);
 
     friend class Complex;
