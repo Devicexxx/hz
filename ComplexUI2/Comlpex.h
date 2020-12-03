@@ -18,7 +18,7 @@ public:
     void setre(double i);
     void setim(double i);
     void setall(double i, double j);
-    void setid(String^* s);
+    void setid(String^& s);
     String^ getre();
     String^ getim();
     String^ getid();

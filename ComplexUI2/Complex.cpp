@@ -3,7 +3,6 @@
 //#include <windows.h>
 #include"iostream"
 
-
 using namespace System;
 //using namespace System::Windows::Forms;
 //float re, im, k;
@@ -184,7 +183,6 @@ void Complex:: operator =(Complex& k)
     this->setre(Convert::ToDouble(k.getre()));
     this->setim(Convert::ToDouble(k.getim()));
 }
-
 
  //класс ComplexArr
 Complex ComplexArr:: operator [](unsigned int i)
