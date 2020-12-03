@@ -738,7 +738,8 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		{
 			double rr = Convert::ToDouble(textBoxReal->Text);
 			double ii = Convert::ToDouble(textBoxImag->Text);
-			System::String^* s = textBoxId->Text;
+			System::String^* s;
+			*s = textBoxId->Text;
 			(*a)[t].setall(rr, ii);
 			(*a)[t].setid(s);
 		}

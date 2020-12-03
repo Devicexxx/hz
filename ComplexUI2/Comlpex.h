@@ -8,7 +8,7 @@ public class Complex
 private:
     double re, im, k;
     double  i, j;
-    System::String^* id;
+    String^* id;
 public:
     Complex() { re = 0; im = 0; id = 0; }
     Complex(double i, double j, String^* s) { re = i; im = j; id = s; }
@@ -18,7 +18,7 @@ public:
     void setre(double i);
     void setim(double i);
     void setall(double i, double j);
-    void setid(String^& s);
+    void setid(String^* s);
     String^ getre();
     String^ getim();
     String^ getid();
