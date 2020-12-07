@@ -200,30 +200,30 @@ ComplexArr::ComplexArr(const ComplexArr& TArr) // Конструкор копий
 }
 Complex ComplexArr:: operator [](System::String^ s)
 {
-    int t;
-    for (int i = 1; i < Len; i++)
+    int t = 0;
+    for (int i = 1; i < this->Len; i++)
     {
         if (arr[i].getid() == s)
         {
             t = i;
         }
     }
-    if (s->Length != 0 && t < Len)
+    if (s->Length != 0 && t < this->Len)
         return arr[t];
     return arr[0];
 }
 void ComplexArr::setSize(unsigned int i)
 {
-    Complex* tmp;
-    tmp = new Complex();
+    ComplexArr* tmp;
+    tmp = new ComplexArr();
         if (arr) // Если память выделялась ранее,
         {
             for (unsigned int k = 0; k < i && k < Len; k++)
-                tmp[k] = arr[k]; // Копируем элементы
+                (*tmp)[k] = arr[k]; // Копируем элементы
             delete[]arr; // освобождаем память
         }
         Len = i; // Устанавливаем новый размер
-        arr = new Complex[Len]; // и выделяем память
+        arr = new Complex[i]; // и выделяем память
 }
 unsigned int ComplexArr::getSize()
 {
