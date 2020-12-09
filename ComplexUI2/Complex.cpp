@@ -7,15 +7,15 @@ using namespace System;
 //using namespace System::Windows::Forms;
 //float re, im, k;
 //double i, j;
-void Complex::setre(double i)
+void Complex::setre(unsigned int i)
 {
     re = i;
 }
-void Complex::setim(double i)
+void Complex::setim(unsigned int i)
 {
     im = i;
 }
-void Complex::setall(double i, double j)
+void Complex::setall(unsigned int i, unsigned int j)
 {
     re = i;
     im = j;
@@ -201,29 +201,29 @@ ComplexArr::ComplexArr(const ComplexArr& TArr) // Конструкор копий
 Complex ComplexArr:: operator [](System::String^ s)
 {
     int t = 0;
-    for (int i = 1; i < this->Len; i++)
+    for (int i = 0; i < Len; i++)
     {
         if (arr[i].getid() == s)
         {
             t = i;
         }
     }
-    if (s->Length != 0 && t < this->Len)
+    if (s->Length != 0 && t < Len)
         return arr[t];
     return arr[0];
 }
 void ComplexArr::setSize(unsigned int i)
 {
-    ComplexArr* tmp;
-    tmp = new ComplexArr();
+    Complex* tmp;
+    tmp = new Complex();
         if (arr) // Если память выделялась ранее,
         {
             for (unsigned int k = 0; k < i && k < Len; k++)
-                (*tmp)[k] = arr[k]; // Копируем элементы
-            delete[]arr; // освобождаем память
+                tmp[k] = arr[k]; // Копируем элементы
+            delete[] arr; // освобождаем память
         }
         Len = i; // Устанавливаем новый размер
-        arr = new Complex[i]; // и выделяем память
+        arr = tmp; // и выделяем память
 }
 unsigned int ComplexArr::getSize()
 {

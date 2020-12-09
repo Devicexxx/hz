@@ -132,6 +132,7 @@ private: System::Windows::Forms::TextBox^ textBoxMasnum;
 private: System::Windows::Forms::Label^ label9;
 private: System::Windows::Forms::Label^ label10;
 private: System::Windows::Forms::Button^ buttonSetStep;
+private: System::Windows::Forms::Button^ button1;
 	private: System::ComponentModel::IContainer^ components;
 		   /// <summary>
 		/// Обязательная переменная конструктора.
@@ -198,6 +199,7 @@ private: System::Windows::Forms::Button^ buttonSetStep;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->buttonSetStep = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -672,15 +674,25 @@ private: System::Windows::Forms::Button^ buttonSetStep;
 			this->buttonSetStep->Name = L"buttonSetStep";
 			this->buttonSetStep->Size = System::Drawing::Size(213, 26);
 			this->buttonSetStep->TabIndex = 35;
-			this->buttonSetStep->Text = L"Задать массив случайно";
+			this->buttonSetStep->Text = L"Задать массив с шагом";
 			this->buttonSetStep->UseVisualStyleBackColor = true;
 			this->buttonSetStep->Click += gcnew System::EventHandler(this, &MyForm::buttonSetStep_Click);
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(708, 219);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(213, 26);
+			this->button1->TabIndex = 36;
+			this->button1->Text = L"Задать массив с шагом";
+			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1186, 600);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->buttonSetStep);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label10);
@@ -751,7 +763,7 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		{
 			double rr = Convert::ToDouble(textBoxReal->Text);
 			double ii = Convert::ToDouble(textBoxImag->Text);
-			System::String^* s;
+			System::String^* s = 0;
 			if (textBoxId->Text->Length < 1)
 				return;
 			*s = textBoxId->Text;
@@ -787,12 +799,10 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		{
 		case 1:
 		{
-
 			(*a)[t].setall(r, i);
 		}
 		case 2:
 		{
-
 			(*b)[t].setall(r, i);
 		}
 		}
@@ -812,12 +822,12 @@ private: System::Void buttonShow_Click(System::Object^ sender, System::EventArgs
 	{
 	case 1:
 	{
-		textBoxShow->Text = (*a)[ Convert::ToDouble(textBoxCh->Text)].getre() + "+" + "i" + "*" + (*a)[ Convert::ToDouble(textBoxCh->Text)].getim();
+		textBoxShow->Text = (*a)[ Convert::ToInt32(textBoxCh->Text)].getre() + "+" + "i" + "*" + (*a)[ Convert::ToInt32(textBoxCh->Text)].getim();
 		return;
 	}
 	case 2:
 	{
-		textBoxShow->Text = (*b)[t = Convert::ToDouble(textBoxCh->Text)].getre() + "+" + "i" + "*" + (*a)[t = Convert::ToDouble(textBoxCh->Text)].getim();
+		textBoxShow->Text = (*b)[t = Convert::ToInt32(textBoxCh->Text)].getre() + "+" + "i" + "*" + (*a)[t = Convert::ToInt32(textBoxCh->Text)].getim();
 		return;
 	}
 	}
@@ -1262,13 +1272,22 @@ private: System::Void buttonSetmas_Click(System::Object^ sender, System::EventAr
 {
 	t = Convert::ToDouble(textBoxMasnum->Text);
 	g = Convert::ToDouble(textBoxMassize->Text);
+	unsigned int r = 0;
+	unsigned int f = 0;
+	String^* s;
 	if (t == 1)
 	{
 		a->setSize(g);
 		for (i = 0; i < g; i++)
 		{
-			(*a)[i].setre(1 + rand() % 10);
-			(*a)[i].setim(1 + rand() % 10);
+			r = rand();
+			f = rand();
+			(*a)[i].setall(r, f);
+		}
+		for (i = 0; i < g; i++)
+		{
+			*s = Convert::ToString(i);
+			(*a)[i].setid(s);
 		}
 	}
 	else
@@ -1277,8 +1296,14 @@ private: System::Void buttonSetmas_Click(System::Object^ sender, System::EventAr
 			b->setSize(g);
 			for (i = 0; i < g; i++)
 			{
-				(*b)[i].setre(rand());
-				(*b)[i].setim(rand());
+				r = rand();
+				f = rand();
+				(*b)[i].setall(r, f);
+			}
+			for (i = 0; i < g; i++)
+			{
+				*s = Convert::ToString(i);
+				(*b)[i].setid(s);
 			}
 		}
 		else
@@ -1288,14 +1313,20 @@ private: System::Void buttonSetStep_Click(System::Object^ sender, System::EventA
 {
 	t = Convert::ToDouble(textBoxMasnum->Text);
 	g = Convert::ToDouble(textBoxMassize->Text);
+	String^* s;
 	if (t == 1)
 	{
 		a->setSize(g);
 		a = new ComplexArr(g);
 		for (i = 0; i < g; i++)
 		{
-			(*a)[i].setre(i);
-			(*a)[i].setim(i);
+			(*a)[i].setre(i+1);
+			(*a)[i].setim(i+2);
+		}
+		for (i = 0; i < g; i++)
+		{
+			*s = Convert::ToString(i);
+			(*a)[i].setid(s);
 		}
 	}
 	else
@@ -1305,8 +1336,13 @@ private: System::Void buttonSetStep_Click(System::Object^ sender, System::EventA
 			b = new ComplexArr(g);
 			for (i = 0; i < g; i++)
 			{
-				(*b)[i].setre(i);
-				(*b)[i].setim(i);
+				(*b)[i].setre(i+1);
+				(*b)[i].setim(i+2);
+			}
+			for (i = 0; i < g; i++)
+			{
+				*s = Convert::ToString(i);
+				(*a)[i].setid(s);
 			}
 		}
 		else

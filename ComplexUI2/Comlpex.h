@@ -6,18 +6,19 @@ using namespace System;
 public class Complex
 {
 private:
-    double re, im, k;
-    double  i, j;
-    String^* id;
+    unsigned int re, im; // размеры компл. числа
+    String^* id; // ID числа в массиве (строка)
+protected:
+    unsigned int  i, j, k;
 public:
-    Complex() { re = 0; im = 0; id = 0; }
-    Complex(double i, double j, String^* s) { re = i; im = j; id = s; }
-    Complex(double i, double j) { re = i; im = j; }
-    Complex(String^* s) { id = s; }
+    Complex() { re = 0; im = 0; id = 0; } // умолчания
+    Complex(unsigned int i, unsigned int j, String^* s) { re = i;  im= j; id = s; }
+    Complex(unsigned int i, unsigned int j) { re = i; im = j; }
+    Complex(String^* s) { id = s; } // ID
     ~Complex() {};
-    void setre(double i);
-    void setim(double i);
-    void setall(double i, double j);
+    void setre(unsigned int i);
+    void setim(unsigned int i);
+    void setall(unsigned int i, unsigned int j);
     void setid(String^* s);
     String^ getre();
     String^ getim();
@@ -44,8 +45,8 @@ public:
 public class ComplexArr
 {
 private:
-    Complex* arr;
-    unsigned int Len;
+    Complex* arr; // ?
+    unsigned int Len; //размер масива
 public:
     ComplexArr() { Len = 0; arr = 0; }
     ComplexArr(unsigned int l)
