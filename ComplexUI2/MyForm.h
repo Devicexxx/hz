@@ -132,7 +132,15 @@ private: System::Windows::Forms::TextBox^ textBoxMasnum;
 private: System::Windows::Forms::Label^ label9;
 private: System::Windows::Forms::Label^ label10;
 private: System::Windows::Forms::Button^ buttonSetStep;
-private: System::Windows::Forms::Button^ button1;
+private: System::Windows::Forms::Button^ buttonEQ;
+private: System::Windows::Forms::TextBox^ textBoxEQ1;
+private: System::Windows::Forms::TextBox^ textBoxEQ2;
+
+
+private: System::Windows::Forms::Label^ label11;
+private: System::Windows::Forms::TextBox^ textBoxClear;
+private: System::Windows::Forms::Button^ buttonClear;
+
 	private: System::ComponentModel::IContainer^ components;
 		   /// <summary>
 		/// Обязательная переменная конструктора.
@@ -199,7 +207,12 @@ private: System::Windows::Forms::Button^ button1;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->buttonSetStep = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->buttonEQ = (gcnew System::Windows::Forms::Button());
+			this->textBoxEQ1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxEQ2 = (gcnew System::Windows::Forms::TextBox());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->textBoxClear = (gcnew System::Windows::Forms::TextBox());
+			this->buttonClear = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -678,21 +691,69 @@ private: System::Windows::Forms::Button^ button1;
 			this->buttonSetStep->UseVisualStyleBackColor = true;
 			this->buttonSetStep->Click += gcnew System::EventHandler(this, &MyForm::buttonSetStep_Click);
 			// 
-			// button1
+			// buttonEQ
 			// 
-			this->button1->Location = System::Drawing::Point(708, 219);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(213, 26);
-			this->button1->TabIndex = 36;
-			this->button1->Text = L"Задать массив с шагом";
-			this->button1->UseVisualStyleBackColor = true;
+			this->buttonEQ->Location = System::Drawing::Point(708, 219);
+			this->buttonEQ->Name = L"buttonEQ";
+			this->buttonEQ->Size = System::Drawing::Size(213, 26);
+			this->buttonEQ->TabIndex = 36;
+			this->buttonEQ->TabStop = false;
+			this->buttonEQ->Text = L"Присвоить массив";
+			this->buttonEQ->UseVisualStyleBackColor = true;
+			this->buttonEQ->Click += gcnew System::EventHandler(this, &MyForm::buttonEQ_Click);
+			// 
+			// textBoxEQ1
+			// 
+			this->textBoxEQ1->Location = System::Drawing::Point(933, 223);
+			this->textBoxEQ1->Name = L"textBoxEQ1";
+			this->textBoxEQ1->Size = System::Drawing::Size(40, 20);
+			this->textBoxEQ1->TabIndex = 37;
+			// 
+			// textBoxEQ2
+			// 
+			this->textBoxEQ2->Location = System::Drawing::Point(1002, 223);
+			this->textBoxEQ2->Name = L"textBoxEQ2";
+			this->textBoxEQ2->Size = System::Drawing::Size(40, 20);
+			this->textBoxEQ2->TabIndex = 38;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(981, 228);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(14, 13);
+			this->label11->TabIndex = 17;
+			this->label11->Text = L"К";
+			// 
+			// textBoxClear
+			// 
+			this->textBoxClear->Location = System::Drawing::Point(933, 255);
+			this->textBoxClear->Name = L"textBoxClear";
+			this->textBoxClear->Size = System::Drawing::Size(40, 20);
+			this->textBoxClear->TabIndex = 40;
+			// 
+			// buttonClear
+			// 
+			this->buttonClear->Location = System::Drawing::Point(708, 251);
+			this->buttonClear->Name = L"buttonClear";
+			this->buttonClear->Size = System::Drawing::Size(213, 26);
+			this->buttonClear->TabIndex = 39;
+			this->buttonClear->TabStop = false;
+			this->buttonClear->Text = L"Очистить массив";
+			this->buttonClear->UseVisualStyleBackColor = true;
+			this->buttonClear->Click += gcnew System::EventHandler(this, &MyForm::buttonClear_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1186, 600);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->textBoxClear);
+			this->Controls->Add(this->buttonClear);
+			this->Controls->Add(this->label11);
+			this->Controls->Add(this->textBoxEQ2);
+			this->Controls->Add(this->textBoxEQ1);
+			this->Controls->Add(this->buttonEQ);
 			this->Controls->Add(this->buttonSetStep);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label10);
@@ -755,6 +816,10 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	p = Convert::ToDouble(textBoxMas->Text);
+	if ((textBoxReal->Text->Length < 0) && (textBoxImag->Text->Length < 0) && (textBoxComb->Text->Length < 1) && (textBoxId->Text->Length != 1))
+	{
+
+	}
 	if ((textBoxReal->Text->Length != 0) && (textBoxImag->Text->Length != 0) && (textBoxComb->Text->Length < 1))
 	{
 		switch (p)
@@ -1345,6 +1410,30 @@ private: System::Void buttonSetStep_Click(System::Object^ sender, System::EventA
 				(*a)[i].setid(s);
 			}
 		}
+		else
+			return;
+}
+private: System::Void buttonEQ_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBoxEQ1->Text->Length < 1 || textBoxEQ2->Text->Length < 1)
+		return;
+	if (Convert::ToInt32(textBoxEQ1) == 1 && Convert::ToInt32(textBoxEQ2) != 1)
+		a = b;
+	else
+		if (Convert::ToInt32(textBoxEQ1) == 2 && Convert::ToInt32(textBoxEQ2) != 2)
+			b = a;
+		else
+			return;
+}
+private: System::Void buttonClear_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBoxClear->Text->Length < 1)
+		return;
+	if (Convert::ToInt32(textBoxClear) == 1)
+		a->Clear();
+	else
+		if (Convert::ToInt32(textBoxClear) == 2)
+			b->Clear();
 		else
 			return;
 }

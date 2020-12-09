@@ -229,13 +229,13 @@ unsigned int ComplexArr::getSize()
 {
     return Len;
 }
-void ComplexArr::Clear(ComplexArr& k)
+void ComplexArr::Clear()
 {
-    unsigned int q = k.getSize();
+    unsigned int q = (*this).getSize();
     for (unsigned int i = 0; i < q; i++)
     {
-        k[i].setim(0);
-        k[i].setre(0);
+        (*this)[i].setim(0);
+        (*this)[i].setre(0);
     }
 }
 void ComplexArr:: operator =(ComplexArr& k)
