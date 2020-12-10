@@ -1339,8 +1339,9 @@ private: System::Void buttonSetmas_Click(System::Object^ sender, System::EventAr
 	g = Convert::ToDouble(textBoxMassize->Text);
 	unsigned int r = 0;
 	unsigned int f = 0;
-	String^* s;
-	if (t == 1)
+	String^ *s;
+	s = new String^();
+ 	if (t == 1)
 	{
 		a->setSize(g);
 		for (i = 0; i < g; i++)

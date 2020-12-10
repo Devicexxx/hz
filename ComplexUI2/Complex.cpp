@@ -215,15 +215,17 @@ Complex ComplexArr:: operator [](System::String^ s)
 void ComplexArr::setSize(unsigned int i)
 {
     Complex* tmp;
-    tmp = new Complex();
+    tmp = new Complex[Len];
         if (arr) // Если память выделялась ранее,
         {
             for (unsigned int k = 0; k < i && k < Len; k++)
                 tmp[k] = arr[k]; // Копируем элементы
             delete[] arr; // освобождаем память
         }
+        arr = new Complex[Len]; // и выделяем память
+        for (unsigned int k = 0; k < Len && k < i; k++)
+            arr[k] = tmp[k];
         Len = i; // Устанавливаем новый размер
-        arr = tmp; // и выделяем память
 }
 unsigned int ComplexArr::getSize()
 {
