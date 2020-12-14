@@ -20,7 +20,7 @@ void Complex::setall(unsigned int i, unsigned int j)
     re = i;
     im = j;
 }
-void Complex::setid(String^* s)
+void Complex::setid(unsigned int s)
 {
     id = s;
 }
@@ -185,7 +185,7 @@ void Complex:: operator =(Complex& k)
 }
 
  //класс ComplexArr
-Complex ComplexArr:: operator [](unsigned int i)
+Complex& ComplexArr:: operator [](unsigned int i)
 {
     if (i < Len)
         return arr[i];
@@ -198,20 +198,20 @@ ComplexArr::ComplexArr(const ComplexArr& TArr) // Конструкор копий
     for (unsigned int i = 0; i < Len; i++)
         arr[i] = TArr.arr[i]; // Копируем элементы
 }
-Complex ComplexArr:: operator [](System::String^ s)
-{
-    int t = 0;
-    for (int i = 0; i < Len; i++)
-    {
-        if (arr[i].getid() == s)
-        {
-            t = i;
-        }
-    }
-    if (s->Length != 0 && t < Len)
-        return arr[t];
-    return arr[0];
-}
+//Complex ComplexArr:: operator [](System::unsigned int s)
+//{
+//    int t = 0;
+//    for (int i = 0; i < Len; i++)
+//    {
+//        if (arr[i].getid() == s)
+//        {
+//            t = i;
+//        }
+//    }
+//    if (s->Length != 0 && t < Len)
+//        return arr[t];
+//    return arr[0];
+//}
 void ComplexArr::setSize(unsigned int i)
 {
     Complex* tmp;

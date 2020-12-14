@@ -828,10 +828,9 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		{
 			double rr = Convert::ToDouble(textBoxReal->Text);
 			double ii = Convert::ToDouble(textBoxImag->Text);
-			System::String^* s = 0;
 			if (textBoxId->Text->Length < 1)
 				return;
-			*s = textBoxId->Text;
+			unsigned int s = Convert::ToInt32(textBoxId->Text);
 			(*a)[t].setall(rr, ii);
 			(*a)[t].setid(s);
 			return;
@@ -840,10 +839,9 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		{
 			double rr = Convert::ToDouble(textBoxReal->Text);
 			double ii = Convert::ToDouble(textBoxImag->Text);
-			System::String^* s;
 			if (textBoxId->Text->Length < 1)
 				return;
-			*s = textBoxId->Text;
+			unsigned int s = Convert::ToInt32(textBoxId->Text);
 			(*b)[t].setall(rr, ii);
 			(*b)[t].setid(s);
 			return;
@@ -1339,21 +1337,20 @@ private: System::Void buttonSetmas_Click(System::Object^ sender, System::EventAr
 	g = Convert::ToDouble(textBoxMassize->Text);
 	unsigned int r = 0;
 	unsigned int f = 0;
-	String^ *s;
-	s = new String^();
+	unsigned int s;
  	if (t == 1)
 	{
 		a->setSize(g);
 		for (i = 0; i < g; i++)
 		{
-			r = rand();
-			f = rand();
-			(*a)[i].setall(r, f);
+			r = rand() % 10;
+			f = rand() % 10;
+			(*a)[i].setre(r);
+			(*a)[i].setim(f);
 		}
 		for (i = 0; i < g; i++)
 		{
-			*s = Convert::ToString(i);
-			(*a)[i].setid(s);
+			(*a)[i].setid(i);
 		}
 	}
 	else
@@ -1368,8 +1365,7 @@ private: System::Void buttonSetmas_Click(System::Object^ sender, System::EventAr
 			}
 			for (i = 0; i < g; i++)
 			{
-				*s = Convert::ToString(i);
-				(*b)[i].setid(s);
+				(*b)[i].setid(i);
 			}
 		}
 		else
@@ -1379,7 +1375,7 @@ private: System::Void buttonSetStep_Click(System::Object^ sender, System::EventA
 {
 	t = Convert::ToDouble(textBoxMasnum->Text);
 	g = Convert::ToDouble(textBoxMassize->Text);
-	String^* s;
+	unsigned int s;
 	if (t == 1)
 	{
 		a->setSize(g);
@@ -1391,8 +1387,7 @@ private: System::Void buttonSetStep_Click(System::Object^ sender, System::EventA
 		}
 		for (i = 0; i < g; i++)
 		{
-			*s = Convert::ToString(i);
-			(*a)[i].setid(s);
+			(*a)[i].setid(i);
 		}
 	}
 	else
@@ -1407,8 +1402,7 @@ private: System::Void buttonSetStep_Click(System::Object^ sender, System::EventA
 			}
 			for (i = 0; i < g; i++)
 			{
-				*s = Convert::ToString(i);
-				(*a)[i].setid(s);
+				(*a)[i].setid(i);
 			}
 		}
 		else
@@ -1418,10 +1412,10 @@ private: System::Void buttonEQ_Click(System::Object^ sender, System::EventArgs^ 
 {
 	if (textBoxEQ1->Text->Length < 1 || textBoxEQ2->Text->Length < 1)
 		return;
-	if (Convert::ToInt32(textBoxEQ1) == 1 && Convert::ToInt32(textBoxEQ2) != 1)
+	if (Convert::ToInt32(textBoxEQ1->Text) == 1 && Convert::ToInt32(textBoxEQ2->Text) != 1)
 		a = b;
 	else
-		if (Convert::ToInt32(textBoxEQ1) == 2 && Convert::ToInt32(textBoxEQ2) != 2)
+		if (Convert::ToInt32(textBoxEQ1->Text) == 2 && Convert::ToInt32(textBoxEQ2->Text) != 2)
 			b = a;
 		else
 			return;
@@ -1430,10 +1424,10 @@ private: System::Void buttonClear_Click(System::Object^ sender, System::EventArg
 {
 	if (textBoxClear->Text->Length < 1)
 		return;
-	if (Convert::ToInt32(textBoxClear) == 1)
+	if (Convert::ToInt32(textBoxClear->Text) == 1)
 		a->Clear();
 	else
-		if (Convert::ToInt32(textBoxClear) == 2)
+		if (Convert::ToInt32(textBoxClear->Text) == 2)
 			b->Clear();
 		else
 			return;

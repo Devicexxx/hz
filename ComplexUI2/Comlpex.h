@@ -7,19 +7,19 @@ public class Complex
 {
 private:
     unsigned int re, im; // размеры компл. числа
-    String^* id; // ID числа в массиве (строка)
+    unsigned int id; // ID числа в массиве (строка)
 protected:
     unsigned int  i, j, k;
 public:
     Complex() { re = 0; im = 0; id = 0; } // умолчания
-    Complex(unsigned int i, unsigned int j, String^* s) { re = i;  im= j; id = s; }
+    Complex(unsigned int i, unsigned int j, unsigned int s) { re = i;  im= j; id = s; }
     Complex(unsigned int i, unsigned int j) { re = i; im = j; }
-    Complex(String^* s) { id = s; } // ID
+    Complex(unsigned int s) { id = s; } // ID
     ~Complex() {};
     void setre(unsigned int i);
     void setim(unsigned int i);
     void setall(unsigned int i, unsigned int j);
-    void setid(String^* s);
+    void setid(unsigned int s);
     String^ getre();
     String^ getim();
     String^ getid();
@@ -59,9 +59,9 @@ public:
     void setSize(unsigned int i);
     void Clear();
 
-    Complex  operator [] (unsigned int i);
+    Complex&  operator [] (unsigned int i);
     unsigned int getSize();
-    Complex operator [] (System::String^ s);
+    /*Complex operator [] (unsigned int s);*/
     void  operator = (ComplexArr& k);
 
     friend class Complex;
