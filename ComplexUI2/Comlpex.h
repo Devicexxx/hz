@@ -37,7 +37,7 @@ public:
     bool operator >(Complex& k);
     bool operator <(Complex& k);
     bool operator ==(Complex& k);
-    void operator =(Complex& k);
+    Complex* operator =(Complex& k);
 
     friend class ComplexArr;
 };

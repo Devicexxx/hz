@@ -140,6 +140,7 @@ private: System::Windows::Forms::TextBox^ textBoxEQ2;
 private: System::Windows::Forms::Label^ label11;
 private: System::Windows::Forms::TextBox^ textBoxClear;
 private: System::Windows::Forms::Button^ buttonClear;
+private: System::Windows::Forms::Button^ button1;
 
 	private: System::ComponentModel::IContainer^ components;
 		   /// <summary>
@@ -213,6 +214,7 @@ private: System::Windows::Forms::Button^ buttonClear;
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->textBoxClear = (gcnew System::Windows::Forms::TextBox());
 			this->buttonClear = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -704,22 +706,22 @@ private: System::Windows::Forms::Button^ buttonClear;
 			// 
 			// textBoxEQ1
 			// 
-			this->textBoxEQ1->Location = System::Drawing::Point(933, 223);
+			this->textBoxEQ1->Location = System::Drawing::Point(984, 223);
 			this->textBoxEQ1->Name = L"textBoxEQ1";
-			this->textBoxEQ1->Size = System::Drawing::Size(40, 20);
+			this->textBoxEQ1->Size = System::Drawing::Size(20, 20);
 			this->textBoxEQ1->TabIndex = 37;
 			// 
 			// textBoxEQ2
 			// 
-			this->textBoxEQ2->Location = System::Drawing::Point(1002, 223);
+			this->textBoxEQ2->Location = System::Drawing::Point(938, 223);
 			this->textBoxEQ2->Name = L"textBoxEQ2";
-			this->textBoxEQ2->Size = System::Drawing::Size(40, 20);
+			this->textBoxEQ2->Size = System::Drawing::Size(21, 20);
 			this->textBoxEQ2->TabIndex = 38;
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(981, 228);
+			this->label11->Location = System::Drawing::Point(965, 228);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(14, 13);
 			this->label11->TabIndex = 17;
@@ -743,11 +745,23 @@ private: System::Windows::Forms::Button^ buttonClear;
 			this->buttonClear->UseVisualStyleBackColor = true;
 			this->buttonClear->Click += gcnew System::EventHandler(this, &MyForm::buttonClear_Click);
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(1024, 217);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(150, 26);
+			this->button1->TabIndex = 41;
+			this->button1->TabStop = false;
+			this->button1->Text = L"Задать массив";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1186, 600);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBoxClear);
 			this->Controls->Add(this->buttonClear);
 			this->Controls->Add(this->label11);
@@ -990,29 +1004,43 @@ private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArg
 	{
 	case 1:
 	{
-		m_p[3] = (111 + Convert::ToInt32((*a)[t].getre())) * 5;
-		m_p[4] = (111 - Convert::ToInt32((*a)[t].getim())) * 5;
+		m_p[3] = (111 + Convert::ToInt32((*a)[t].getre())) *5;
+		m_p[4] = (111 - Convert::ToInt32((*a)[t].getim())) *5;
+
+		m_p[1] = 111;
+		m_p[2] = 111;
+
+		m_p[5] = 111;
+		m_p[6] = 0;
+		m_p[7] = 111;
+		m_p[8] = 222;
+		m_p[9] = 0;
+		m_p[10] = 111;
+		m_p[11] = 222;
+		m_p[12] = 111;
+		pictureBox1->Refresh();
 		return;
 	}
 	case 2:
 	{
-		m_p[3] = (111 + Convert::ToInt32((*b)[t].getre())) * 5;
-		m_p[4] = (111 - Convert::ToInt32((*b)[t].getim())) * 5;
+		m_p[3] = (111 + Convert::ToInt32((*b)[t].getre())) *5;
+		m_p[4] = (111 - Convert::ToInt32((*b)[t].getim())) *5;
+
+		m_p[1] = 111;
+		m_p[2] = 111;
+
+		m_p[5] = 111;
+		m_p[6] = 0;
+		m_p[7] = 111;
+		m_p[8] = 222;
+		m_p[9] = 0;
+		m_p[10] = 111;
+		m_p[11] = 222;
+		m_p[12] = 111;
+		pictureBox1->Refresh();
 		return;
 	}
 	}
-	m_p[1] = 111;
-	m_p[2] = 111;
-	
-	m_p[5] = 111;
-	m_p[6] = 0;
-	m_p[7] = 111;
-	m_p[8] = 222;
-	m_p[9] = 0;
-	m_p[10] = 111;
-	m_p[11] = 222;
-	m_p[12] = 111;
-	pictureBox1->Refresh();
 }
 private: System::Void buttonSum_Click(System::Object^ sender, System::EventArgs^ e) 
 {
@@ -1189,39 +1217,39 @@ private: System::Void buttonLess_Click(System::Object^ sender, System::EventArgs
 	{
 		if ((*a)[t] < (*a)[g])
 		{
-			textBoxAbove->Text = "True";
+			textBoxLess->Text = "True";
 			return;
 		}
-		textBoxAbove->Text = "False";
+		textBoxLess->Text = "False";
 	}
 	else
 		if (p == o == 2)
 		{
 			if ((*b)[t] < (*b)[g])
 			{
-				textBoxAbove->Text = "True";
+				textBoxLess->Text = "True";
 				return;
 			}
-			textBoxAbove->Text = "False";
+			textBoxLess->Text = "False";
 		}
 		else
 			if (p > o)
 			{
 				if ((*a)[t] < (*b)[g])
 				{
-					textBoxAbove->Text = "True";
+					textBoxLess->Text = "True";
 					return;
 				}
-				textBoxAbove->Text = "False";
+				textBoxLess->Text = "False";
 			}
 			else
 			{
 				if ((*b)[t] < (*a)[g])
 				{
-					textBoxAbove->Text = "True";
+					textBoxLess->Text = "True";
 					return;
 				}
-				textBoxAbove->Text = "False";
+				textBoxLess->Text = "False";
 			}
 }
 private: System::Void buttonComp_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -1236,39 +1264,39 @@ private: System::Void buttonComp_Click(System::Object^ sender, System::EventArgs
 	{
 		if ((*a)[t] == (*a)[g])
 		{
-			textBoxAbove->Text = "True";
+			textBoxComp->Text = "True";
 			return;
 		}
-		textBoxAbove->Text = "False";
+		textBoxComp->Text = "False";
 	}
 	else
 		if (p == o == 2)
 		{
 			if ((*b)[t] == (*b)[g])
 			{
-				textBoxAbove->Text = "True";
+				textBoxComp->Text = "True";
 				return;
 			}
-			textBoxAbove->Text = "False";
+			textBoxComp->Text = "False";
 		}
 		else
 			if (p > o)
 			{
 				if ((*a)[t] == (*b)[g])
 				{
-					textBoxAbove->Text = "True";
+					textBoxComp->Text = "True";
 					return;
 				}
-				textBoxAbove->Text = "False";
+				textBoxComp->Text = "False";
 			}
 			else
 			{
 				if ((*b)[t] == (*a)[g])
 				{
-					textBoxAbove->Text = "True";
+					textBoxComp->Text = "True";
 					return;
 				}
-				textBoxAbove->Text = "False";
+				textBoxComp->Text = "False";
 			}
 }
 private: System::Void buttonEqa_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -1390,7 +1418,6 @@ private: System::Void buttonSetStep_Click(System::Object^ sender, System::EventA
 			(*a)[i].setid(i);
 		}
 	}
-	else
 		if (t == 2)
 		{
 			b->setSize(g);
@@ -1413,10 +1440,16 @@ private: System::Void buttonEQ_Click(System::Object^ sender, System::EventArgs^ 
 	if (textBoxEQ1->Text->Length < 1 || textBoxEQ2->Text->Length < 1)
 		return;
 	if (Convert::ToInt32(textBoxEQ1->Text) == 1 && Convert::ToInt32(textBoxEQ2->Text) != 1)
+	{
 		a = b;
+		return;
+	}
 	else
 		if (Convert::ToInt32(textBoxEQ1->Text) == 2 && Convert::ToInt32(textBoxEQ2->Text) != 2)
+		{
 			b = a;
+			return;
+		}
 		else
 			return;
 }
@@ -1425,10 +1458,54 @@ private: System::Void buttonClear_Click(System::Object^ sender, System::EventArg
 	if (textBoxClear->Text->Length < 1)
 		return;
 	if (Convert::ToInt32(textBoxClear->Text) == 1)
+	{
 		a->Clear();
+		return;
+	}
 	else
 		if (Convert::ToInt32(textBoxClear->Text) == 2)
+		{
 			b->Clear();
+			return;
+		}
+		else
+			return;
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	t = Convert::ToDouble(textBoxMasnum->Text);
+	g = Convert::ToDouble(textBoxMassize->Text);
+	unsigned int r = 0;
+	unsigned int f = 0;
+	unsigned int s;
+	if (t == 1)
+	{
+		a->setSize(g);
+		for (i = 0; i < g; i++)
+			{
+			(*a)[i].setre(0);
+			(*a)[i].setim(0);
+		}
+		for (i = 0; i < g; i++)
+		{
+			(*a)[i].setid(i);
+		}
+		return;
+	}
+	else
+		if (t == 2)
+		{
+			b->setSize(g);
+			for (i = 0; i < g; i++)
+			{
+				(*b)[i].setall(0, 0);
+			}
+			for (i = 0; i < g; i++)
+			{
+				(*b)[i].setid(i);
+			}
+			return;
+		}
 		else
 			return;
 }

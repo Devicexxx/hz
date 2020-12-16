@@ -178,10 +178,11 @@ bool Complex:: operator ==(Complex& k)
         return true;
     return false;
 }
-void Complex:: operator =(Complex& k)
+Complex* Complex:: operator =(Complex& k)
 {
     this->setre(Convert::ToDouble(k.getre()));
     this->setim(Convert::ToDouble(k.getim()));
+    return this;
 }
 
  //класс ComplexArr
@@ -222,7 +223,7 @@ void ComplexArr::setSize(unsigned int i)
                 tmp[k] = arr[k]; // Копируем элементы
             delete[] arr; // освобождаем память
         }
-        arr = new Complex[Len]; // и выделяем память
+        arr = new Complex[i]; // и выделяем память
         for (unsigned int k = 0; k < Len && k < i; k++)
             arr[k] = tmp[k];
         Len = i; // Устанавливаем новый размер
