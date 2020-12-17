@@ -14,8 +14,8 @@ namespace ComplexUI2
 	using namespace std;
 
 	int m_p[12];
-	ComplexArr* a;
-	ComplexArr* b;
+	ComplexArr<Complex>* a;
+	ComplexArr<Complex>* b;
 	unsigned int t, g, p, o;
 	String^* str[6];
 	/// <summary>
@@ -32,8 +32,8 @@ namespace ComplexUI2
 			//
 			//TODO: добавьте код конструктора
 			//
-			a = new ComplexArr();
-			b = new ComplexArr();
+			a = new ComplexArr<Complex>();
+			b = new ComplexArr<Complex>();
 		}
 
 	protected:
@@ -1512,7 +1512,7 @@ private: System::Void buttonSetStep_Click(System::Object^ sender, System::EventA
 	if (t == 1)
 	{
 		a->setSize(g);
-		a = new ComplexArr(g);
+		a = new ComplexArr<Complex>(g);
 		for (i = 0; i < g; i++)
 		{
 			(*a)[i].setre(i+1);
@@ -1526,7 +1526,7 @@ private: System::Void buttonSetStep_Click(System::Object^ sender, System::EventA
 		if (t == 2)
 		{
 			b->setSize(g);
-			b = new ComplexArr(g);
+			b = new ComplexArr<Complex>(g);
 			for (i = 0; i < g; i++)
 			{
 				(*b)[i].setre(i+1);

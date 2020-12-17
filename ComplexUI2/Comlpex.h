@@ -25,9 +25,9 @@ public:
     String^ getid();
     String^ abs();
     String^ phase();
-    void print();
+ /*   void print();
     void printre();
-    void printim();
+    void printim();*/
     void operator +=(Complex& k);
     void operator -=(Complex& k);
     Complex* operator +(Complex& k);
@@ -39,30 +39,31 @@ public:
     bool operator ==(Complex& k);
     Complex* operator =(Complex& k);
 
-    friend class ComplexArr;
+    //friend class ComplexArr;
 };
 
+template <class T>
 public class ComplexArr
 {
 private:
-    Complex* arr; // ?
+    T* arr; // ?
     unsigned int Len; //размер масива
 public:
     ComplexArr() { Len = 0; arr = 0; }
     ComplexArr(unsigned int l)
     {
         Len = l;
-        arr = new Complex[l];
+        arr = new T[l];
     }
     ~ComplexArr() {};
-    ComplexArr(const ComplexArr& TArr);// Конструкор копий
+    ComplexArr<T>(const ComplexArr<T>& TArr);// Конструкор копий
     void setSize(unsigned int i);
     void Clear();
 
-    Complex&  operator [] (unsigned int i);
+    T&  operator [] (unsigned int i);
     unsigned int getSize();
     /*Complex operator [] (unsigned int s);*/
-    void  operator = (ComplexArr& k);
+    void  operator = (ComplexArr<T>& k);
 
     friend class Complex;
 };

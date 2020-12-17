@@ -53,18 +53,18 @@ String^ Complex::phase()
                 k = 3.14 * (-1);
     return Convert::ToString(k);
 }
-void Complex::print()
-{
-    printf("\n %f + i*%f \n", re, im);
-}
-void Complex::printre()
-{
-    printf("/n %f /n", re);
-}
-void Complex::printim()
-{
-    printf("/n i*%f /n", im);
-}
+//void Complex::print()
+//{
+//    printf("\n %f + i*%f \n", re, im);
+//}
+//void Complex::printre()
+//{
+//    printf("/n %f /n", re);
+//}
+//void Complex::printim()
+//{
+//    printf("/n i*%f /n", im);
+//}
 void Complex:: operator +=(Complex& k)
 {
     double a, b, c, d;
@@ -186,16 +186,18 @@ Complex* Complex:: operator =(Complex& k)
 }
 
  //класс ComplexArr
-Complex& ComplexArr:: operator [](unsigned int i)
+template <class T>
+T& ComplexArr<T>:: operator [](unsigned int i)
 {
     if (i < Len)
         return arr[i];
     return arr[0];
 }
-ComplexArr::ComplexArr(const ComplexArr& TArr) // Конструкор копий
+template <class T>
+ComplexArr<T>::ComplexArr(const ComplexArr<T>& TArr) // Конструкор копий
 {
     Len = TArr.Len; // Устанавливаем размер
-    arr = new Complex[Len]; // Выделяем память
+    arr = new T[Len]; // Выделяем память
     for (unsigned int i = 0; i < Len; i++)
         arr[i] = TArr.arr[i]; // Копируем элементы
 }
@@ -213,26 +215,29 @@ ComplexArr::ComplexArr(const ComplexArr& TArr) // Конструкор копий
 //        return arr[t];
 //    return arr[0];
 //}
-void ComplexArr::setSize(unsigned int i)
+template <class T>
+void ComplexArr<T>::setSize(unsigned int i)
 {
-    Complex* tmp;
-    tmp = new Complex[Len];
+    T* tmp;
+    tmp = new T[Len];
         if (arr) // Если память выделялась ранее,
         {
             for (unsigned int k = 0; k < i && k < Len; k++)
                 tmp[k] = arr[k]; // Копируем элементы
             delete[] arr; // освобождаем память
         }
-        arr = new Complex[i]; // и выделяем память
+        arr = new T[i]; // и выделяем память
         for (unsigned int k = 0; k < Len && k < i; k++)
             arr[k] = tmp[k];
         Len = i; // Устанавливаем новый размер
 }
-unsigned int ComplexArr::getSize()
+template <class T>
+unsigned int ComplexArr<T>::getSize()
 {
     return Len;
 }
-void ComplexArr::Clear()
+template <class T>
+void ComplexArr<T>::Clear()
 {
     unsigned int q = (*this).getSize();
     for (unsigned int i = 0; i < q; i++)
@@ -241,7 +246,8 @@ void ComplexArr::Clear()
         (*this)[i].setre(0);
     }
 }
-void ComplexArr:: operator =(ComplexArr& k)
+template <class T>
+void ComplexArr<T>:: operator =(ComplexArr<T>& k)
 {
     unsigned int q;
     if (this->getSize() > k.getSize())
