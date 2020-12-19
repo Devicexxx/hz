@@ -16,6 +16,8 @@ namespace ComplexUI2
 	int m_p[12];
 	ComplexArr<Complex>* a;
 	ComplexArr<Complex>* b;
+	ComplexArr<int>* c;
+	ComplexArr<int>* d;
 	unsigned int t, g, p, o;
 	String^* str[6];
 	/// <summary>
@@ -34,6 +36,8 @@ namespace ComplexUI2
 			//
 			a = new ComplexArr<Complex>();
 			b = new ComplexArr<Complex>();
+			c = new ComplexArr<int>();
+			d = new ComplexArr<int>();
 		}
 
 	protected:
@@ -144,6 +148,46 @@ private: System::Windows::Forms::Button^ button1;
 private: System::Windows::Forms::TextBox^ textBoxId1;
 private: System::Windows::Forms::Label^ label12;
 private: System::Windows::Forms::RichTextBox^ richTextBox1;
+private: System::Windows::Forms::Label^ label13;
+private: System::Windows::Forms::TextBox^ textBoxInt;
+private: System::Windows::Forms::Label^ label14;
+private: System::Windows::Forms::TextBox^ textBoxId2;
+private: System::Windows::Forms::Label^ label15;
+private: System::Windows::Forms::TextBox^ textBoxMasInt;
+private: System::Windows::Forms::Button^ button2;
+private: System::Windows::Forms::TextBox^ textBoxMassize2;
+
+private: System::Windows::Forms::Button^ buttonEnter2;
+
+private: System::Windows::Forms::Label^ label16;
+private: System::Windows::Forms::Label^ label17;
+private: System::Windows::Forms::TextBox^ textBoxIdInt;
+
+
+
+private: System::Windows::Forms::TextBox^ textBoxShow2;
+
+private: System::Windows::Forms::Button^ buttonShow2;
+private: System::Windows::Forms::Button^ buttonSetStep2;
+
+
+private: System::Windows::Forms::Button^ buttonSetmas2;
+private: System::Windows::Forms::TextBox^ textBoxClear2;
+
+
+private: System::Windows::Forms::Button^ buttonClear2;
+
+private: System::Windows::Forms::Label^ label18;
+private: System::Windows::Forms::TextBox^ textBoxEQint2;
+private: System::Windows::Forms::TextBox^ textBoxEQint1;
+
+
+private: System::Windows::Forms::Button^ buttonEQ2;
+private: System::Windows::Forms::Label^ label19;
+private: System::Windows::Forms::TextBox^ textBoxNumint;
+
+
+
 
 	private: System::ComponentModel::IContainer^ components;
 		   /// <summary>
@@ -179,6 +223,8 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBoxImag = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxReal = (gcnew System::Windows::Forms::TextBox());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->textBoxInt = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->OutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBoxShow = (gcnew System::Windows::Forms::TextBox());
@@ -221,6 +267,28 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			this->textBoxId1 = (gcnew System::Windows::Forms::TextBox());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->textBoxId2 = (gcnew System::Windows::Forms::TextBox());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->textBoxMasInt = (gcnew System::Windows::Forms::TextBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->textBoxMassize2 = (gcnew System::Windows::Forms::TextBox());
+			this->buttonEnter2 = (gcnew System::Windows::Forms::Button());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->textBoxIdInt = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxShow2 = (gcnew System::Windows::Forms::TextBox());
+			this->buttonShow2 = (gcnew System::Windows::Forms::Button());
+			this->buttonSetStep2 = (gcnew System::Windows::Forms::Button());
+			this->buttonSetmas2 = (gcnew System::Windows::Forms::Button());
+			this->textBoxClear2 = (gcnew System::Windows::Forms::TextBox());
+			this->buttonClear2 = (gcnew System::Windows::Forms::Button());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->textBoxEQint2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxEQint1 = (gcnew System::Windows::Forms::TextBox());
+			this->buttonEQ2 = (gcnew System::Windows::Forms::Button());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->textBoxNumint = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -230,7 +298,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			this->buttonEnter->Location = System::Drawing::Point(6, 19);
 			this->buttonEnter->Name = L"buttonEnter";
-			this->buttonEnter->Size = System::Drawing::Size(267, 90);
+			this->buttonEnter->Size = System::Drawing::Size(267, 68);
 			this->buttonEnter->TabIndex = 0;
 			this->buttonEnter->Text = L"Задать число";
 			this->buttonEnter->UseVisualStyleBackColor = true;
@@ -238,7 +306,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// buttonShow
 			// 
-			this->buttonShow->Location = System::Drawing::Point(12, 151);
+			this->buttonShow->Location = System::Drawing::Point(12, 121);
 			this->buttonShow->Name = L"buttonShow";
 			this->buttonShow->Size = System::Drawing::Size(267, 30);
 			this->buttonShow->TabIndex = 1;
@@ -248,7 +316,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// buttonAbs
 			// 
-			this->buttonAbs->Location = System::Drawing::Point(12, 187);
+			this->buttonAbs->Location = System::Drawing::Point(12, 157);
 			this->buttonAbs->Name = L"buttonAbs";
 			this->buttonAbs->Size = System::Drawing::Size(267, 26);
 			this->buttonAbs->TabIndex = 2;
@@ -258,7 +326,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// buttonPhase
 			// 
-			this->buttonPhase->Location = System::Drawing::Point(12, 219);
+			this->buttonPhase->Location = System::Drawing::Point(12, 189);
 			this->buttonPhase->Name = L"buttonPhase";
 			this->buttonPhase->Size = System::Drawing::Size(267, 30);
 			this->buttonPhase->TabIndex = 3;
@@ -287,7 +355,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			this->groupBox1->Controls->Add(this->buttonEnter);
 			this->groupBox1->Location = System::Drawing::Point(6, 25);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(1168, 123);
+			this->groupBox1->Size = System::Drawing::Size(1168, 94);
 			this->groupBox1->TabIndex = 4;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Задать число";
@@ -295,7 +363,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(748, 96);
+			this->label8->Location = System::Drawing::Point(748, 71);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(15, 13);
 			this->label8->TabIndex = 16;
@@ -303,7 +371,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxId
 			// 
-			this->textBoxId->Location = System::Drawing::Point(769, 92);
+			this->textBoxId->Location = System::Drawing::Point(769, 67);
 			this->textBoxId->Name = L"textBoxId";
 			this->textBoxId->Size = System::Drawing::Size(146, 20);
 			this->textBoxId->TabIndex = 15;
@@ -311,7 +379,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(924, 58);
+			this->label6->Location = System::Drawing::Point(924, 47);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(87, 13);
 			this->label6->TabIndex = 14;
@@ -319,7 +387,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxMasB
 			// 
-			this->textBoxMasB->Location = System::Drawing::Point(1013, 55);
+			this->textBoxMasB->Location = System::Drawing::Point(1013, 44);
 			this->textBoxMasB->Name = L"textBoxMasB";
 			this->textBoxMasB->Size = System::Drawing::Size(146, 20);
 			this->textBoxMasB->TabIndex = 13;
@@ -343,7 +411,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(680, 58);
+			this->label5->Location = System::Drawing::Point(680, 47);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(83, 13);
 			this->label5->TabIndex = 10;
@@ -351,7 +419,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxChB
 			// 
-			this->textBoxChB->Location = System::Drawing::Point(769, 55);
+			this->textBoxChB->Location = System::Drawing::Point(769, 44);
 			this->textBoxChB->Name = L"textBoxChB";
 			this->textBoxChB->Size = System::Drawing::Size(146, 20);
 			this->textBoxChB->TabIndex = 9;
@@ -375,7 +443,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(297, 92);
+			this->label3->Location = System::Drawing::Point(297, 67);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(32, 13);
 			this->label3->TabIndex = 6;
@@ -383,7 +451,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxComb
 			// 
-			this->textBoxComb->Location = System::Drawing::Point(335, 92);
+			this->textBoxComb->Location = System::Drawing::Point(335, 67);
 			this->textBoxComb->Name = L"textBoxComb";
 			this->textBoxComb->Size = System::Drawing::Size(339, 20);
 			this->textBoxComb->TabIndex = 5;
@@ -392,7 +460,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(277, 58);
+			this->label2->Location = System::Drawing::Point(277, 47);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(52, 13);
 			this->label2->TabIndex = 4;
@@ -410,7 +478,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxImag
 			// 
-			this->textBoxImag->Location = System::Drawing::Point(335, 55);
+			this->textBoxImag->Location = System::Drawing::Point(335, 44);
 			this->textBoxImag->Name = L"textBoxImag";
 			this->textBoxImag->Size = System::Drawing::Size(339, 20);
 			this->textBoxImag->TabIndex = 2;
@@ -421,6 +489,22 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			this->textBoxReal->Name = L"textBoxReal";
 			this->textBoxReal->Size = System::Drawing::Size(339, 20);
 			this->textBoxReal->TabIndex = 1;
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Location = System::Drawing::Point(15, 228);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(53, 13);
+			this->label13->TabIndex = 18;
+			this->label13->Text = L"Число int";
+			// 
+			// textBoxInt
+			// 
+			this->textBoxInt->Location = System::Drawing::Point(74, 225);
+			this->textBoxInt->Name = L"textBoxInt";
+			this->textBoxInt->Size = System::Drawing::Size(123, 20);
+			this->textBoxInt->TabIndex = 17;
 			// 
 			// menuStrip1
 			// 
@@ -440,7 +524,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxShow
 			// 
-			this->textBoxShow->Location = System::Drawing::Point(341, 157);
+			this->textBoxShow->Location = System::Drawing::Point(341, 127);
 			this->textBoxShow->Name = L"textBoxShow";
 			this->textBoxShow->Size = System::Drawing::Size(154, 20);
 			this->textBoxShow->TabIndex = 6;
@@ -448,23 +532,23 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxMod
 			// 
-			this->textBoxMod->Location = System::Drawing::Point(341, 191);
+			this->textBoxMod->Location = System::Drawing::Point(341, 161);
 			this->textBoxMod->Name = L"textBoxMod";
 			this->textBoxMod->Size = System::Drawing::Size(339, 20);
 			this->textBoxMod->TabIndex = 7;
 			// 
 			// textBoxPfase
 			// 
-			this->textBoxPfase->Location = System::Drawing::Point(341, 225);
+			this->textBoxPfase->Location = System::Drawing::Point(341, 195);
 			this->textBoxPfase->Name = L"textBoxPfase";
 			this->textBoxPfase->Size = System::Drawing::Size(339, 20);
 			this->textBoxPfase->TabIndex = 8;
 			// 
 			// buttonInc
 			// 
-			this->buttonInc->Location = System::Drawing::Point(12, 398);
+			this->buttonInc->Location = System::Drawing::Point(13, 442);
 			this->buttonInc->Name = L"buttonInc";
-			this->buttonInc->Size = System::Drawing::Size(267, 49);
+			this->buttonInc->Size = System::Drawing::Size(266, 46);
 			this->buttonInc->TabIndex = 12;
 			this->buttonInc->Text = L"Увеличить";
 			this->buttonInc->UseVisualStyleBackColor = true;
@@ -472,9 +556,9 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// buttonSum
 			// 
-			this->buttonSum->Location = System::Drawing::Point(12, 480);
+			this->buttonSum->Location = System::Drawing::Point(13, 495);
 			this->buttonSum->Name = L"buttonSum";
-			this->buttonSum->Size = System::Drawing::Size(267, 23);
+			this->buttonSum->Size = System::Drawing::Size(266, 20);
 			this->buttonSum->TabIndex = 13;
 			this->buttonSum->Text = L"Сумма";
 			this->buttonSum->UseVisualStyleBackColor = true;
@@ -522,7 +606,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxInc
 			// 
-			this->textBoxInc->Location = System::Drawing::Point(286, 401);
+			this->textBoxInc->Location = System::Drawing::Point(286, 442);
 			this->textBoxInc->Name = L"textBoxInc";
 			this->textBoxInc->Size = System::Drawing::Size(178, 20);
 			this->textBoxInc->TabIndex = 18;
@@ -551,23 +635,23 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxSum
 			// 
-			this->textBoxSum->Location = System::Drawing::Point(286, 483);
+			this->textBoxSum->Location = System::Drawing::Point(286, 495);
 			this->textBoxSum->Name = L"textBoxSum";
 			this->textBoxSum->Size = System::Drawing::Size(178, 20);
 			this->textBoxSum->TabIndex = 23;
 			// 
 			// textBoxDifr
 			// 
-			this->textBoxDifr->Location = System::Drawing::Point(286, 512);
+			this->textBoxDifr->Location = System::Drawing::Point(287, 521);
 			this->textBoxDifr->Name = L"textBoxDifr";
 			this->textBoxDifr->Size = System::Drawing::Size(178, 20);
 			this->textBoxDifr->TabIndex = 25;
 			// 
 			// buttonDifr
 			// 
-			this->buttonDifr->Location = System::Drawing::Point(12, 509);
+			this->buttonDifr->Location = System::Drawing::Point(13, 521);
 			this->buttonDifr->Name = L"buttonDifr";
-			this->buttonDifr->Size = System::Drawing::Size(267, 23);
+			this->buttonDifr->Size = System::Drawing::Size(267, 20);
 			this->buttonDifr->TabIndex = 24;
 			this->buttonDifr->Text = L"Разность";
 			this->buttonDifr->UseVisualStyleBackColor = true;
@@ -575,16 +659,16 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxProd
 			// 
-			this->textBoxProd->Location = System::Drawing::Point(286, 541);
+			this->textBoxProd->Location = System::Drawing::Point(286, 547);
 			this->textBoxProd->Name = L"textBoxProd";
 			this->textBoxProd->Size = System::Drawing::Size(178, 20);
 			this->textBoxProd->TabIndex = 27;
 			// 
 			// buttonProd
 			// 
-			this->buttonProd->Location = System::Drawing::Point(12, 538);
+			this->buttonProd->Location = System::Drawing::Point(13, 547);
 			this->buttonProd->Name = L"buttonProd";
-			this->buttonProd->Size = System::Drawing::Size(267, 23);
+			this->buttonProd->Size = System::Drawing::Size(267, 20);
 			this->buttonProd->TabIndex = 26;
 			this->buttonProd->Text = L"Произведение";
 			this->buttonProd->UseVisualStyleBackColor = true;
@@ -599,9 +683,9 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// buttonQuo
 			// 
-			this->buttonQuo->Location = System::Drawing::Point(12, 567);
+			this->buttonQuo->Location = System::Drawing::Point(13, 570);
 			this->buttonQuo->Name = L"buttonQuo";
-			this->buttonQuo->Size = System::Drawing::Size(267, 23);
+			this->buttonQuo->Size = System::Drawing::Size(267, 20);
 			this->buttonQuo->TabIndex = 28;
 			this->buttonQuo->Text = L"Часное";
 			this->buttonQuo->UseVisualStyleBackColor = true;
@@ -632,7 +716,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxIncb
 			// 
-			this->textBoxIncb->Location = System::Drawing::Point(286, 427);
+			this->textBoxIncb->Location = System::Drawing::Point(286, 468);
 			this->textBoxIncb->Name = L"textBoxIncb";
 			this->textBoxIncb->Size = System::Drawing::Size(178, 20);
 			this->textBoxIncb->TabIndex = 32;
@@ -641,7 +725,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			this->buttonEqb->Location = System::Drawing::Point(470, 570);
 			this->buttonEqb->Name = L"buttonEqb";
-			this->buttonEqb->Size = System::Drawing::Size(267, 23);
+			this->buttonEqb->Size = System::Drawing::Size(267, 20);
 			this->buttonEqb->TabIndex = 33;
 			this->buttonEqb->Text = L"Присвоение B к A";
 			this->buttonEqb->UseVisualStyleBackColor = true;
@@ -649,7 +733,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// buttonSetmas
 			// 
-			this->buttonSetmas->Location = System::Drawing::Point(708, 155);
+			this->buttonSetmas->Location = System::Drawing::Point(708, 125);
 			this->buttonSetmas->Name = L"buttonSetmas";
 			this->buttonSetmas->Size = System::Drawing::Size(213, 26);
 			this->buttonSetmas->TabIndex = 34;
@@ -659,14 +743,14 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxMassize
 			// 
-			this->textBoxMassize->Location = System::Drawing::Point(1024, 187);
+			this->textBoxMassize->Location = System::Drawing::Point(1024, 157);
 			this->textBoxMassize->Name = L"textBoxMassize";
 			this->textBoxMassize->Size = System::Drawing::Size(146, 20);
 			this->textBoxMassize->TabIndex = 18;
 			// 
 			// textBoxMasnum
 			// 
-			this->textBoxMasnum->Location = System::Drawing::Point(1024, 154);
+			this->textBoxMasnum->Location = System::Drawing::Point(1024, 124);
 			this->textBoxMasnum->Name = L"textBoxMasnum";
 			this->textBoxMasnum->Size = System::Drawing::Size(146, 20);
 			this->textBoxMasnum->TabIndex = 17;
@@ -674,7 +758,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(930, 190);
+			this->label9->Location = System::Drawing::Point(930, 160);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(93, 13);
 			this->label9->TabIndex = 18;
@@ -683,7 +767,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(930, 157);
+			this->label10->Location = System::Drawing::Point(930, 127);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(88, 13);
 			this->label10->TabIndex = 17;
@@ -691,7 +775,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// buttonSetStep
 			// 
-			this->buttonSetStep->Location = System::Drawing::Point(708, 185);
+			this->buttonSetStep->Location = System::Drawing::Point(708, 155);
 			this->buttonSetStep->Name = L"buttonSetStep";
 			this->buttonSetStep->Size = System::Drawing::Size(213, 26);
 			this->buttonSetStep->TabIndex = 35;
@@ -701,7 +785,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// buttonEQ
 			// 
-			this->buttonEQ->Location = System::Drawing::Point(708, 219);
+			this->buttonEQ->Location = System::Drawing::Point(708, 189);
 			this->buttonEQ->Name = L"buttonEQ";
 			this->buttonEQ->Size = System::Drawing::Size(213, 26);
 			this->buttonEQ->TabIndex = 36;
@@ -712,14 +796,14 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxEQ1
 			// 
-			this->textBoxEQ1->Location = System::Drawing::Point(984, 223);
+			this->textBoxEQ1->Location = System::Drawing::Point(984, 193);
 			this->textBoxEQ1->Name = L"textBoxEQ1";
 			this->textBoxEQ1->Size = System::Drawing::Size(20, 20);
 			this->textBoxEQ1->TabIndex = 37;
 			// 
 			// textBoxEQ2
 			// 
-			this->textBoxEQ2->Location = System::Drawing::Point(938, 223);
+			this->textBoxEQ2->Location = System::Drawing::Point(938, 193);
 			this->textBoxEQ2->Name = L"textBoxEQ2";
 			this->textBoxEQ2->Size = System::Drawing::Size(21, 20);
 			this->textBoxEQ2->TabIndex = 38;
@@ -727,7 +811,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(965, 228);
+			this->label11->Location = System::Drawing::Point(965, 198);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(14, 13);
 			this->label11->TabIndex = 17;
@@ -735,14 +819,14 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxClear
 			// 
-			this->textBoxClear->Location = System::Drawing::Point(933, 255);
+			this->textBoxClear->Location = System::Drawing::Point(933, 225);
 			this->textBoxClear->Name = L"textBoxClear";
 			this->textBoxClear->Size = System::Drawing::Size(40, 20);
 			this->textBoxClear->TabIndex = 40;
 			// 
 			// buttonClear
 			// 
-			this->buttonClear->Location = System::Drawing::Point(708, 251);
+			this->buttonClear->Location = System::Drawing::Point(708, 221);
 			this->buttonClear->Name = L"buttonClear";
 			this->buttonClear->Size = System::Drawing::Size(213, 26);
 			this->buttonClear->TabIndex = 39;
@@ -753,7 +837,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(1024, 217);
+			this->button1->Location = System::Drawing::Point(1024, 187);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(150, 26);
 			this->button1->TabIndex = 41;
@@ -764,7 +848,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// textBoxId1
 			// 
-			this->textBoxId1->Location = System::Drawing::Point(530, 157);
+			this->textBoxId1->Location = System::Drawing::Point(530, 127);
 			this->textBoxId1->Name = L"textBoxId1";
 			this->textBoxId1->Size = System::Drawing::Size(150, 20);
 			this->textBoxId1->TabIndex = 42;
@@ -772,7 +856,7 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(509, 162);
+			this->label12->Location = System::Drawing::Point(509, 132);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(15, 13);
 			this->label12->TabIndex = 17;
@@ -780,21 +864,235 @@ private: System::Windows::Forms::RichTextBox^ richTextBox1;
 			// 
 			// richTextBox1
 			// 
-			this->richTextBox1->Location = System::Drawing::Point(512, 251);
+			this->richTextBox1->Location = System::Drawing::Point(512, 221);
 			this->richTextBox1->Name = L"richTextBox1";
 			this->richTextBox1->Size = System::Drawing::Size(168, 156);
 			this->richTextBox1->TabIndex = 43;
 			this->richTextBox1->Text = L"";
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(53, 254);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(15, 13);
+			this->label14->TabIndex = 20;
+			this->label14->Text = L"id";
+			// 
+			// textBoxId2
+			// 
+			this->textBoxId2->Location = System::Drawing::Point(74, 251);
+			this->textBoxId2->Name = L"textBoxId2";
+			this->textBoxId2->Size = System::Drawing::Size(123, 20);
+			this->textBoxId2->TabIndex = 19;
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(22, 280);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(46, 13);
+			this->label15->TabIndex = 22;
+			this->label15->Text = L"Массив";
+			// 
+			// textBoxMasInt
+			// 
+			this->textBoxMasInt->Location = System::Drawing::Point(74, 277);
+			this->textBoxMasInt->Name = L"textBoxMasInt";
+			this->textBoxMasInt->Size = System::Drawing::Size(45, 20);
+			this->textBoxMasInt->TabIndex = 21;
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(221, 320);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(124, 20);
+			this->button2->TabIndex = 45;
+			this->button2->TabStop = false;
+			this->button2->Text = L"Задать массив";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
+			// textBoxMassize2
+			// 
+			this->textBoxMassize2->Location = System::Drawing::Point(74, 320);
+			this->textBoxMassize2->Name = L"textBoxMassize2";
+			this->textBoxMassize2->Size = System::Drawing::Size(123, 20);
+			this->textBoxMassize2->TabIndex = 44;
+			// 
+			// buttonEnter2
+			// 
+			this->buttonEnter2->Location = System::Drawing::Point(221, 225);
+			this->buttonEnter2->Name = L"buttonEnter2";
+			this->buttonEnter2->Size = System::Drawing::Size(124, 72);
+			this->buttonEnter2->TabIndex = 17;
+			this->buttonEnter2->Text = L"Задать число";
+			this->buttonEnter2->UseVisualStyleBackColor = true;
+			this->buttonEnter2->Click += gcnew System::EventHandler(this, &MyForm::buttonEnter2_Click);
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(22, 323);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(46, 13);
+			this->label16->TabIndex = 46;
+			this->label16->Text = L"Размер";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Location = System::Drawing::Point(127, 362);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(18, 13);
+			this->label17->TabIndex = 49;
+			this->label17->Text = L"ID";
+			// 
+			// textBoxIdInt
+			// 
+			this->textBoxIdInt->Location = System::Drawing::Point(148, 357);
+			this->textBoxIdInt->Name = L"textBoxIdInt";
+			this->textBoxIdInt->Size = System::Drawing::Size(49, 20);
+			this->textBoxIdInt->TabIndex = 50;
+			// 
+			// textBoxShow2
+			// 
+			this->textBoxShow2->Location = System::Drawing::Point(74, 357);
+			this->textBoxShow2->Name = L"textBoxShow2";
+			this->textBoxShow2->Size = System::Drawing::Size(45, 20);
+			this->textBoxShow2->TabIndex = 48;
+			// 
+			// buttonShow2
+			// 
+			this->buttonShow2->Location = System::Drawing::Point(221, 357);
+			this->buttonShow2->Name = L"buttonShow2";
+			this->buttonShow2->Size = System::Drawing::Size(124, 20);
+			this->buttonShow2->TabIndex = 47;
+			this->buttonShow2->Text = L"Вывести число";
+			this->buttonShow2->UseVisualStyleBackColor = true;
+			this->buttonShow2->Click += gcnew System::EventHandler(this, &MyForm::buttonShow2_Click);
+			// 
+			// buttonSetStep2
+			// 
+			this->buttonSetStep2->Location = System::Drawing::Point(351, 336);
+			this->buttonSetStep2->Name = L"buttonSetStep2";
+			this->buttonSetStep2->Size = System::Drawing::Size(144, 24);
+			this->buttonSetStep2->TabIndex = 52;
+			this->buttonSetStep2->Text = L"Задать массив с шагом";
+			this->buttonSetStep2->UseVisualStyleBackColor = true;
+			this->buttonSetStep2->Click += gcnew System::EventHandler(this, &MyForm::buttonSetStep2_Click);
+			// 
+			// buttonSetmas2
+			// 
+			this->buttonSetmas2->Location = System::Drawing::Point(351, 306);
+			this->buttonSetmas2->Name = L"buttonSetmas2";
+			this->buttonSetmas2->Size = System::Drawing::Size(144, 24);
+			this->buttonSetmas2->TabIndex = 51;
+			this->buttonSetmas2->Text = L"Задать массив случайно";
+			this->buttonSetmas2->UseVisualStyleBackColor = true;
+			this->buttonSetmas2->Click += gcnew System::EventHandler(this, &MyForm::buttonSetmas2_Click);
+			// 
+			// textBoxClear2
+			// 
+			this->textBoxClear2->Location = System::Drawing::Point(148, 387);
+			this->textBoxClear2->Name = L"textBoxClear2";
+			this->textBoxClear2->Size = System::Drawing::Size(49, 20);
+			this->textBoxClear2->TabIndex = 54;
+			// 
+			// buttonClear2
+			// 
+			this->buttonClear2->Location = System::Drawing::Point(221, 387);
+			this->buttonClear2->Name = L"buttonClear2";
+			this->buttonClear2->Size = System::Drawing::Size(124, 20);
+			this->buttonClear2->TabIndex = 53;
+			this->buttonClear2->TabStop = false;
+			this->buttonClear2->Text = L"Очистить массив";
+			this->buttonClear2->UseVisualStyleBackColor = true;
+			this->buttonClear2->Click += gcnew System::EventHandler(this, &MyForm::buttonClear2_Click);
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(158, 420);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(14, 13);
+			this->label18->TabIndex = 55;
+			this->label18->Text = L"К";
+			// 
+			// textBoxEQint2
+			// 
+			this->textBoxEQint2->Location = System::Drawing::Point(131, 415);
+			this->textBoxEQint2->Name = L"textBoxEQint2";
+			this->textBoxEQint2->Size = System::Drawing::Size(21, 20);
+			this->textBoxEQint2->TabIndex = 58;
+			// 
+			// textBoxEQint1
+			// 
+			this->textBoxEQint1->Location = System::Drawing::Point(177, 415);
+			this->textBoxEQint1->Name = L"textBoxEQint1";
+			this->textBoxEQint1->Size = System::Drawing::Size(20, 20);
+			this->textBoxEQint1->TabIndex = 57;
+			// 
+			// buttonEQ2
+			// 
+			this->buttonEQ2->Location = System::Drawing::Point(221, 414);
+			this->buttonEQ2->Name = L"buttonEQ2";
+			this->buttonEQ2->Size = System::Drawing::Size(124, 20);
+			this->buttonEQ2->TabIndex = 56;
+			this->buttonEQ2->TabStop = false;
+			this->buttonEQ2->Text = L"Присвоить массив";
+			this->buttonEQ2->UseVisualStyleBackColor = true;
+			this->buttonEQ2->Click += gcnew System::EventHandler(this, &MyForm::buttonEQ2_Click);
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(125, 280);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(41, 13);
+			this->label19->TabIndex = 59;
+			this->label19->Text = L"Номер";
+			// 
+			// textBoxNumint
+			// 
+			this->textBoxNumint->Location = System::Drawing::Point(171, 277);
+			this->textBoxNumint->Name = L"textBoxNumint";
+			this->textBoxNumint->Size = System::Drawing::Size(26, 20);
+			this->textBoxNumint->TabIndex = 60;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1186, 600);
+			this->Controls->Add(this->label19);
+			this->Controls->Add(this->textBoxNumint);
+			this->Controls->Add(this->label18);
+			this->Controls->Add(this->textBoxEQint2);
+			this->Controls->Add(this->textBoxEQint1);
+			this->Controls->Add(this->buttonEQ2);
+			this->Controls->Add(this->textBoxClear2);
+			this->Controls->Add(this->buttonClear2);
+			this->Controls->Add(this->buttonSetStep2);
+			this->Controls->Add(this->buttonSetmas2);
+			this->Controls->Add(this->label17);
+			this->Controls->Add(this->textBoxIdInt);
+			this->Controls->Add(this->textBoxShow2);
+			this->Controls->Add(this->buttonShow2);
+			this->Controls->Add(this->label16);
+			this->Controls->Add(this->buttonEnter2);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->textBoxMassize2);
+			this->Controls->Add(this->label15);
 			this->Controls->Add(this->richTextBox1);
+			this->Controls->Add(this->textBoxMasInt);
+			this->Controls->Add(this->label14);
 			this->Controls->Add(this->label12);
+			this->Controls->Add(this->textBoxId2);
 			this->Controls->Add(this->textBoxId1);
+			this->Controls->Add(this->label13);
 			this->Controls->Add(this->button1);
+			this->Controls->Add(this->textBoxInt);
 			this->Controls->Add(this->textBoxClear);
 			this->Controls->Add(this->buttonClear);
 			this->Controls->Add(this->label11);
@@ -863,7 +1161,7 @@ private: System::Void buttonEnter_Click(System::Object^ sender, System::EventArg
 		return;
 	t = Convert::ToDouble(textBoxCh->Text);
 	p = Convert::ToDouble(textBoxMas->Text);
-	if ((textBoxReal->Text->Length < 0) && (textBoxImag->Text->Length < 0) && (textBoxComb->Text->Length < 1) && (textBoxId->Text->Length != 1))
+	if ((textBoxReal->Text->Length < 1) && (textBoxImag->Text->Length < 1) && (textBoxComb->Text->Length < 1) && (textBoxId->Text->Length != 1))
 	{
 
 	}
@@ -1609,6 +1907,176 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			{
 				(*b)[i].setid(i);
 			}
+			return;
+		}
+		else
+			return;
+}
+private: System::Void buttonEnter2_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBoxInt->Text->Length < 1)
+		return;
+	t = Convert::ToInt32(textBoxNumint->Text);
+	p = Convert::ToInt32(textBoxMasInt->Text);
+		switch (p)
+		{
+		case 1:
+		{
+			int rr = Convert::ToInt32(textBoxInt->Text);
+			if (textBoxId2->Text->Length < 1)
+			{
+				(*c)[t] = rr;
+				return;
+			}
+			else
+			{
+				if (textBoxId2->Text->Length != 0 && textBoxInt->Text->Length < 1)
+				{
+					int k = Convert::ToInt32(textBoxId2->Text);
+					(*c)[k] = rr;
+					return;
+				}
+			}
+			return;
+		}
+		case 2:
+		{
+			int rr = Convert::ToInt32(textBoxInt->Text);
+			if (textBoxId2->Text->Length < 1)
+			{
+				(*d)[t] = rr;
+				return;
+			}
+			else
+			{
+				if (textBoxId2->Text->Length != 0)
+				{
+					int k = Convert::ToInt32(textBoxId2->Text);
+					(*d)[k] = rr;
+					return;
+				}
+			}
+			return;
+		}
+		}
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	g = Convert::ToDouble(textBoxMassize2->Text);
+	t = Convert::ToDouble(textBoxMasInt->Text);
+	if (t == 1)
+	{
+		c->setSize(g);
+		for (i = 0; i < g; i++)
+			(*c)[i] = 0;
+		return;
+	}
+	else
+		if (t == 2)
+		{
+			d->setSize(g);
+			for (i = 0; i < g; i++)
+				(*d)[i] = 0;
+			return;
+		}
+		else
+			return;
+}
+private: System::Void buttonSetmas2_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	t = Convert::ToDouble(textBoxMasInt->Text);
+	g = Convert::ToDouble(textBoxMassize2->Text);
+	if (t == 1)
+	{
+		c->setSize(g);
+		for (i = 0; i < g; i++)
+			(*c)[i] = rand() % 10;
+		return;
+	}
+	else
+		if (t == 2)
+		{
+			d->setSize(g);
+			for (i = 0; i < g; i++)
+				(*d)[i] = rand() % 10;
+			return;
+		}
+		else
+			return;
+}
+private: System::Void buttonSetStep2_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	t = Convert::ToDouble(textBoxMasInt->Text);
+	g = Convert::ToDouble(textBoxMassize2->Text);
+	unsigned int s;
+	if (t == 1)
+	{
+		c->setSize(g);
+		for (i = 0; i < g; i++)
+			(*c)[i] = (i + 1);
+	}
+	if (t == 2)
+	{
+		d->setSize(g);
+		for (i = 0; i < g; i++)
+			(*d)[i] = (i + 1);
+	}
+	else
+		return;
+}
+private: System::Void buttonShow2_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	t = Convert::ToDouble(textBoxMasInt->Text);
+	g = Convert::ToDouble(textBoxNumint->Text);
+	unsigned int s;
+	if (t == 1)
+	{
+		if (Convert::ToInt32(textBoxNumint->Text) > c->getSize())
+			return;
+		textBoxShow2->Text = Convert::ToString((*c)[g]);
+		textBoxIdInt->Text = Convert::ToString(g);
+	}
+	if (t == 2)
+	{
+		if (Convert::ToInt32(textBoxNumint->Text) > d->getSize())
+			return;
+		textBoxShow2->Text = Convert::ToString((*d)[g]);
+		textBoxIdInt->Text = Convert::ToString(g);
+	}
+	else
+		return;
+}
+private: System::Void buttonClear2_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBoxClear2->Text->Length < 1)
+		return;
+	if (Convert::ToInt32(textBoxClear2->Text) == 1)
+	{
+		c->Clear();
+		return;
+	}
+	else
+		if (Convert::ToInt32(textBoxClear2->Text) == 2)
+		{
+			d->Clear();
+			return;
+		}
+		else
+			return;
+}
+private: System::Void buttonEQ2_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBoxEQint1->Text->Length < 1 || textBoxEQint2->Text->Length < 1)
+		return;
+	if (Convert::ToInt32(textBoxEQint1->Text) == 1 && Convert::ToInt32(textBoxEQint2->Text) != 1)
+	{
+		c = d;
+		return;
+	}
+	else
+		if (Convert::ToInt32(textBoxEQint1->Text) == 2 && Convert::ToInt32(textBoxEQint2->Text) != 2)
+		{
+			d = c;
 			return;
 		}
 		else

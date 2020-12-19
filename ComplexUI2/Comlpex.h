@@ -42,7 +42,7 @@ public:
     //friend class ComplexArr;
 };
 
-template <class T>
+template <typename T>
 public class ComplexArr
 {
 private:
@@ -62,8 +62,74 @@ public:
 
     T&  operator [] (unsigned int i);
     unsigned int getSize();
-    /*Complex operator [] (unsigned int s);*/
     void  operator = (ComplexArr<T>& k);
 
     friend class Complex;
 };
+
+
+
+template <typename T>
+T& ComplexArr<T>:: operator [](unsigned int i)
+{
+    if (i < Len)
+        return arr[i];
+    return arr[0];
+}
+
+template <typename T>
+ComplexArr<T>::ComplexArr<T>(const ComplexArr<T>& TArr) // Конструкор копий
+{
+    Len = TArr.Len; // Устанавливаем размер
+    arr = new T[Len]; // Выделяем память
+    for (unsigned int i = 0; i < Len; i++)
+        arr[i] = TArr.arr[i]; // Копируем элементы
+}
+
+template <typename T>
+void ComplexArr<T>::setSize(unsigned int i)
+{
+    T* tmp;
+    tmp = new T[Len];
+    if (arr) // Если память выделялась ранее,
+    {
+        for (unsigned int k = 0; k < i && k < Len; k++)
+            tmp[k] = arr[k]; // Копируем элементы
+        delete[] arr; // освобождаем память
+    }
+    arr = new T[i]; // и выделяем память
+    for (unsigned int k = 0; k < Len && k < i; k++)
+        arr[k] = tmp[k];
+    Len = i; // Устанавливаем новый размер
+}
+
+template <typename T>
+unsigned int ComplexArr<T>::getSize()
+{
+    return Len;
+}
+
+template <typename T>
+void ComplexArr<T>::Clear()
+{
+    unsigned int q = (*this).getSize();
+    for (unsigned int i = 0; i < q; i++)
+    {
+        (*this)[i].setim(0);
+        (*this)[i].setre(0);
+    }
+}
+
+template <typename T>
+void ComplexArr<T>:: operator =(ComplexArr<T>& k)
+{
+    unsigned int q;
+    if (this->getSize() > k.getSize())
+        q = k.getSize();
+    else
+        q = this->getSize();
+    for (unsigned int i = 0; i < q; i++)
+    {
+        (*this)[i] = k[i];
+    }
+}
